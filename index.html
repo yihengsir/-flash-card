@@ -129,7 +129,7 @@
                     <p class="text-lg text-gray-600 mb-2">中文:</p>
                     <p id="answer-chinese" class="text-2xl font-semibold mb-4 text-neutral"></p>
                     <p class="text-lg text-gray-600 mb-2">例句:</p>
-                    <p id="answer-example" class="text-xl italic text-gray-700"></p>
+                    <p id="answer-example" class="text-xl italic text-gray-700 hover:text-primary cursor-pointer transition-colors duration-200"></p>
                 </div>
             </div>
         </main>
@@ -236,7 +236,7 @@
 
         const answerEnglishEl = document.getElementById('answer-english');
         const answerChineseEl = document.getElementById('answer-chinese');
-        const answerExampleEl = document.getElementById('answer-example');
+        const answerExampleEl = document.getElementById('answer-example'); // 获取例句元素
 
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
@@ -268,7 +268,7 @@
         const incorrectCardsList = document.getElementById('incorrect-cards-list');
         const closeReportAndRestartBtn = document.getElementById('close-report-and-restart-btn');
 
-        // Audio Elements (NEW)
+        // Audio Elements
         const clickSound = document.getElementById('clickSound');
         const correctSound = document.getElementById('correctSound');
         const wrongSound = document.getElementById('wrongSound');
@@ -279,6 +279,25 @@
                 audioElement.currentTime = 0; // Rewind to the start
                 audioElement.play().catch(e => console.error("Error playing sound:", e)); // Catch potential play errors
             }
+        }
+
+        // Helper function for speaking text (NEW)
+        function speakText(text, lang = 'en-US') {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = lang;
+                // Stop any current speech before starting new one
+                window.speechSynthesis.cancel(); 
+                window.speechSynthesis.speak(utterance);
+            } else {
+                console.warn("Speech Synthesis not supported in this browser.");
+            }
+        }
+
+        // Named function for example sentence click event (NEW)
+        function speakExampleSentence() {
+            speakText(answerExampleEl.textContent, 'en-US');
+            playSound(clickSound); // Play click sound when example is clicked
         }
 
         // Function to start the main application
@@ -334,6 +353,11 @@
             currentSelectedOption = null;
             currentCardIsCorrect = null; // Reset correctness flag for new card
 
+            // Remove example sentence listener if it was previously set
+            answerExampleEl.removeEventListener('click', speakExampleSentence);
+            answerExampleEl.style.cursor = 'default'; // Reset cursor
+            answerExampleEl.classList.remove('hover:text-primary'); // Remove hover effect
+
             // Generate options (one correct, one incorrect)
             const correctOption = currentCard.chinese;
             const incorrectOption = getRandomDistractor(currentCard.chinese);
@@ -373,7 +397,6 @@
         function selectOption(selectedOption, currentCard) {
             const optionButtons = optionsContainer.querySelectorAll('.option-button');
             optionButtons.forEach(button => {
-                // IMPORTANT: Removed `button.disabled = true;` to allow re-selection
                 if (button.textContent === selectedOption) {
                     button.classList.add('ring-4', 'ring-primary', 'ring-offset-2');
                 } else {
@@ -431,6 +454,14 @@
             checkAnswerBtn.classList.add('hidden');
             updateStatsDisplay();
             console.log('Check Answer: Total Attempts:', userStats.totalAttempts, 'Correct Answers:', userStats.correctAnswers, 'Learned Words:', userStats.learnedWords.size, 'Incorrect Cards Count:', userStats.incorrectlyAnsweredCards.size);
+        
+            // NEW: Automatically read English word after flip
+            speakText(answerEnglishEl.textContent, 'en-US');
+            
+            // NEW: Make example sentence clickable for speech
+            answerExampleEl.style.cursor = 'pointer'; // Add pointer cursor
+            answerExampleEl.classList.add('hover:text-primary'); // Add hover effect
+            answerExampleEl.addEventListener('click', speakExampleSentence); // Add click listener
         }
 
         // Navigate to previous card
@@ -527,9 +558,18 @@
                     cardDiv.innerHTML = `
                         <p class="text-lg font-semibold text-red-800">英文: ${card.english}</p>
                         <p class="text-lg text-neutral-700">中文: ${card.chinese}</p>
-                        <p class="text-md italic text-gray-600">例句: ${card.example}</p>
+                        <p class="text-md italic text-gray-600 cursor-pointer hover:text-primary transition-colors duration-200 example-in-report">例句: ${card.example}</p>
                     `;
                     incorrectCardsList.appendChild(cardDiv);
+                });
+                // Add event listeners to all example sentences in the report
+                document.querySelectorAll('.example-in-report').forEach(exampleEl => {
+                    exampleEl.addEventListener('click', () => {
+                        // Extract just the example text, remove "例句: " prefix
+                        const exampleText = exampleEl.textContent.replace('例句: ', '');
+                        speakText(exampleText, 'en-US');
+                        playSound(clickSound); // Play click sound
+                    });
                 });
             }
             console.log('Showing error report. Incorrect cards:', userStats.incorrectlyAnsweredCards.size);
@@ -555,6 +595,7 @@
             hideStatsModal();
             hideCompletionPage(); 
             hideErrorReport();
+            window.speechSynthesis.cancel(); // Stop any ongoing speech
             console.log('App restarted. All stats reset.');
         }
 
