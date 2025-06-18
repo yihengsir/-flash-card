@@ -17,6 +17,7 @@
                         danger: '#EF4444', /* 红色 */
                         neutral: '#1F2937', /* 深灰文字 */
                         'neutral-light': '#F3F4F6', /* 浅灰背景 */
+                        'warning': '#F59E0B', /* 黄色，用于其他警告，但这里我们用danger表示错误选项 */
                     },
                     fontFamily: {
                         comic: ['"Comic Sans MS"', '"Marker Felt"', 'Arial', 'sans-serif'],
@@ -56,8 +57,9 @@
                 background-color: #f9fafb; /* Light gray background for back */
             }
             .option-button {
-                transition: background-color 0.3s, transform 0.2s;
+                transition: background-color 0.3s, transform 0.2s, border-color 0.3s; /* Add border-color transition */
                 transform: scale(1);
+                border: 2px solid transparent; /* Default transparent border */
             }
             .option-button:hover {
                 transform: scale(1.02);
@@ -232,6 +234,7 @@
         };
         let currentSelectedOption = null;
         let currentCardIsCorrect = null;
+        let isAnswerChecked = false; // New state variable: true after checking answer, before flipping
 
         // Welcome Page Elements
         const welcomePage = document.getElementById('welcome-page');
@@ -357,7 +360,7 @@
             return array;
         }
 
-        // Render current card
+        // Render current card (front side)
         function renderCard() {
             if (flashcards.length === 0) {
                 cardEnglishEl.textContent = 'No cards available.';
@@ -377,17 +380,16 @@
             checkAnswerBtn.classList.add('hidden');
             currentSelectedOption = null;
             currentCardIsCorrect = null; // Reset correctness flag for new card
+            isAnswerChecked = false; // Reset answer checked state
 
             // Remove previous speech listeners from card back
-            // Only remove from the main container (answerEnglishEl/answerExampleEl)
             answerEnglishEl.removeEventListener('click', speakEnglishWord);
-            answerEnglishEl.style.cursor = 'default'; // Reset cursor
-            answerEnglishEl.classList.remove('hover:text-primary'); // Remove hover effect
+            answerEnglishEl.style.cursor = 'default'; 
+            answerEnglishEl.classList.remove('hover:text-primary'); 
 
             answerExampleEl.removeEventListener('click', speakExampleSentence);
-            answerExampleEl.style.cursor = 'default'; // Reset cursor
-            answerExampleEl.classList.remove('hover:text-primary'); // Remove hover effect
-
+            answerExampleEl.style.cursor = 'default'; 
+            answerExampleEl.classList.remove('hover:text-primary'); 
 
             // Generate options (one correct, one incorrect)
             const correctOption = currentCard.chinese;
@@ -397,6 +399,7 @@
             options.forEach(option => {
                 const button = document.createElement('button');
                 button.textContent = option;
+                // Removed ring-4, ring-offset-2 from initial class, will add on selection
                 button.className = 'option-button w-full bg-indigo-100 text-indigo-700 font-semibold py-3 px-6 rounded-xl shadow-md hover:bg-indigo-200 transition duration-300';
                 button.addEventListener('click', () => {
                     selectOption(option, currentCard);
@@ -424,102 +427,158 @@
             return availableDistractors[randomIndex];
         }
 
-        // User selects an option (NOW ALLOWS RE-SELECTION BEFORE CHECK)
+        // User selects an option
         function selectOption(selectedOption, currentCard) {
+            if (isAnswerChecked) return; // Prevent selection after answer is checked
+
             const optionButtons = optionsContainer.querySelectorAll('.option-button');
             optionButtons.forEach(button => {
-                if (button.textContent === selectedOption) {
-                    button.classList.add('ring-4', 'ring-primary', 'ring-offset-2');
-                } else {
-                    button.classList.remove('ring-4', 'ring-primary', 'ring-offset-2');
-                }
+                // Reset styling for all buttons first
+                button.classList.remove('ring-4', 'ring-primary', 'ring-offset-2');
+                button.classList.remove('bg-success', 'text-white', 'border-success'); // Clear correct/wrong highlights
+                button.classList.remove('bg-danger', 'text-white', 'border-danger'); // Use danger here too for reset
+                button.classList.add('bg-indigo-100', 'text-indigo-700'); // Restore default colors
             });
+
+            const selectedButton = Array.from(optionButtons).find(button => button.textContent === selectedOption);
+            if (selectedButton) {
+                selectedButton.classList.add('ring-4', 'ring-primary', 'ring-offset-2'); // Highlight selected
+            }
 
             currentSelectedOption = selectedOption;
             currentCardIsCorrect = (selectedOption === currentCard.chinese);
             
-            checkAnswerBtn.classList.remove('hidden');
-            console.log('Option selected:', selectedOption, 'Is correct (pending check):', currentCardIsCorrect);
+            checkAnswerBtn.classList.remove('hidden'); // Show check button
+            console.log('Option selected:', selectedOption);
         }
 
-        // Check button clicked (displays feedback and flips card)
-        function checkAndFlipCard() {
+        // Check button clicked (displays feedback and highlights options, but does NOT flip)
+        function checkAnswer() { // Renamed from checkAndFlipCard
             if (currentSelectedOption === null) return; // Ensure an option is selected
 
             const currentCard = flashcards[currentCardIndex];
+            isAnswerChecked = true; // Set state to answer checked
 
-            // After checking, disable all options to prevent further interaction until next card
+            // After checking, disable all options to prevent further interaction
             const optionButtons = optionsContainer.querySelectorAll('.option-button');
             optionButtons.forEach(button => {
                 button.disabled = true;
+                button.classList.remove('ring-4', 'ring-primary', 'ring-offset-2'); // Remove primary ring
             });
 
             // Mark card as attempted
             userStats.attemptedCardEnglishPhrases.add(currentCard.english);
 
             userStats.totalAttempts++;
+
             if (currentCardIsCorrect) {
                 userStats.correctAnswers++;
                 userStats.learnedWords.add(currentCard.english);
-                // Remove from incorrect if they got it right this time
                 userStats.incorrectlyAnsweredCards.delete(currentCard.english); 
                 feedbackMessageEl.textContent = '正确!';
                 feedbackMessageEl.className = 'text-2xl font-bold mt-4 text-success';
-                playSound(correctSound); // Play correct sound
+                playSound(correctSound); 
+                
+                // Highlight correct option in green
+                const correctButton = Array.from(optionButtons).find(button => button.textContent === currentCard.chinese);
+                if (correctButton) {
+                    correctButton.classList.remove('bg-indigo-100', 'text-indigo-700', 'hover:bg-indigo-200');
+                    correctButton.classList.add('bg-success', 'text-white', 'border-2', 'border-success');
+                }
             } else {
-                // Add to incorrect answers if not already there
                 if (!userStats.incorrectlyAnsweredCards.has(currentCard.english)) {
                     userStats.incorrectlyAnsweredCards.set(currentCard.english, currentCard);
                 }
-                userStats.learnedWords.delete(currentCard.english); // If they got it wrong, it's not "learned"
+                userStats.learnedWords.delete(currentCard.english); 
                 feedbackMessageEl.textContent = '错误!';
                 feedbackMessageEl.className = 'text-2xl font-bold mt-4 text-danger';
-                playSound(wrongSound); // Play wrong sound
+                playSound(wrongSound); 
+
+                // Highlight selected (wrong) option in RED
+                const selectedWrongButton = Array.from(optionButtons).find(button => button.textContent === currentSelectedOption);
+                if (selectedWrongButton) {
+                    selectedWrongButton.classList.remove('bg-indigo-100', 'text-indigo-700', 'hover:bg-indigo-200');
+                    selectedWrongButton.classList.add('bg-danger', 'text-white', 'border-2', 'border-danger'); // Changed to bg-danger
+                }
+                // Highlight correct option in green (if it's not the selected wrong one)
+                const correctButton = Array.from(optionButtons).find(button => button.textContent === currentCard.chinese);
+                if (correctButton && correctButton !== selectedWrongButton) {
+                    correctButton.classList.remove('bg-indigo-100', 'text-indigo-700', 'hover:bg-indigo-200');
+                    correctButton.classList.add('bg-success', 'text-white', 'border-2', 'border-success');
+                }
             }
 
-            // Set text content for the spans, not the parent <p>
+            // Hide check button after answer is revealed
+            checkAnswerBtn.classList.add('hidden'); 
+            updateStatsDisplay();
+            console.log('Answer checked. Current state:', userStats);
+        }
+
+        // Function to flip card to back (called by clicking card after check)
+        function flipCardToBack() {
+            if (!isAnswerChecked || cardElement.classList.contains('card-flipped')) {
+                return; // Only flip if answer checked and currently on front
+            }
+
+            const currentCard = flashcards[currentCardIndex];
             englishTextEl.textContent = currentCard.english;
             answerChineseEl.textContent = currentCard.chinese;
             exampleTextEl.textContent = currentCard.example;
 
             cardElement.classList.add('card-flipped');
-            checkAnswerBtn.classList.add('hidden');
-            updateStatsDisplay();
-            console.log('Check Answer: Total Attempts:', userStats.totalAttempts, 'Correct Answers:', userStats.correctAnswers, 'Learned Words:', userStats.learnedWords.size, 'Incorrect Cards Count:', userStats.incorrectlyAnsweredCards.size);
-        
+
             // Make English word clickable for speech
-            answerEnglishEl.style.cursor = 'pointer'; // Add pointer cursor
-            answerEnglishEl.classList.add('hover:text-primary'); // Add hover effect
-            answerEnglishEl.addEventListener('click', speakEnglishWord); // Add click listener
+            answerEnglishEl.style.cursor = 'pointer';
+            answerEnglishEl.classList.add('hover:text-primary');
+            answerEnglishEl.addEventListener('click', speakEnglishWord);
 
             // Make example sentence clickable for speech
-            answerExampleEl.style.cursor = 'pointer'; // Add pointer cursor
-            answerExampleEl.classList.add('hover:text-primary'); // Add hover effect
-            answerExampleEl.addEventListener('click', speakExampleSentence); // Add click listener
+            answerExampleEl.style.cursor = 'pointer';
+            answerExampleEl.classList.add('hover:text-primary');
+            answerExampleEl.addEventListener('click', speakExampleSentence);
+            
+            console.log('Card flipped to back.');
         }
+
 
         // Navigate to previous card
         function prevCard() {
-            cardElement.classList.remove('card-flipped'); // Flip back before changing content
-            setTimeout(() => { // Give a brief moment for flip animation
+            // If card is currently flipped to back, flip to front first
+            if (cardElement.classList.contains('card-flipped')) {
+                cardElement.classList.remove('card-flipped');
+                // Give a brief moment for flip animation before changing content
+                setTimeout(() => {
+                    currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
+                    renderCard();
+                }, 300); // Half of card-flip transition duration
+            } else { // If already on front or not yet checked, just change card
                 currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
                 renderCard();
-            }, 300); // Half of card-flip transition duration
+            }
         }
 
         // Navigate to next card, handles completion check
         function nextCard() {
-            cardElement.classList.remove('card-flipped'); // Flip back before changing content
-            setTimeout(() => { // Give a brief moment for flip animation
+            // If card is currently flipped to back, flip to front first
+            if (cardElement.classList.contains('card-flipped')) {
+                cardElement.classList.remove('card-flipped');
+                // Give a brief moment for flip animation before changing content
+                setTimeout(() => {
+                    currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+                    if (currentCardIndex === 0 && userStats.attemptedCardEnglishPhrases.size >= flashcards.length && flashcards.length > 0) {
+                        showCompletionPage(true);
+                    } else {
+                        renderCard();
+                    }
+                }, 300); // Half of card-flip transition duration
+            } else { // If already on front or not yet checked, just change card
                 currentCardIndex = (currentCardIndex + 1) % flashcards.length;
-                
-                // If we've looped back to the beginning after attempting all unique cards, show completion
                 if (currentCardIndex === 0 && userStats.attemptedCardEnglishPhrases.size >= flashcards.length && flashcards.length > 0) {
-                    showCompletionPage(true); // Pass true to indicate full completion
+                    showCompletionPage(true);
                 } else {
                     renderCard();
                 }
-            }, 300); // Half of card-flip transition duration
+            }
         }
 
         // Update card counter
@@ -563,7 +622,6 @@
                 completionTitleEl.textContent = "Congratulations!";
                 completionMessageEl.textContent = "恭喜您完成全部练习！";
             } else {
-                // Updated message, removed period
                 completionTitleEl.textContent = "练习结束";
                 completionMessageEl.textContent = "您已提前结束练习"; 
             }
@@ -622,9 +680,8 @@
             hideCompletionPage(); // Hide completion page
             // The appContent is already shown by hideCompletionPage()
             cardElement.classList.remove('card-flipped'); // Ensure card is front-facing
-            // No need to call renderCard() immediately if current card is already displayed
-            // If the user was on the back of the card, they'll see the front again.
-            // If they want to go to next/previous, they'll use those buttons.
+            // Re-render the current card to reset its state, options, etc.
+            renderCard(); 
             console.log('Returning to practice from completion page.');
         }
 
@@ -716,7 +773,27 @@
             });
 
             // Main app event listeners
-            checkAnswerBtn.addEventListener('click', checkAndFlipCard);
+            checkAnswerBtn.addEventListener('click', checkAnswer); // Changed to checkAnswer
+            
+            // New: Card click listener to flip after answer is checked
+            cardElement.addEventListener('click', (e) => {
+                // Ensure click is not on an option button itself, or check button
+                // Check if the click target or any of its parents is an option button or check button
+                let isClickOnButton = false;
+                let target = e.target;
+                while (target != cardElement && target != null) {
+                    if (target.classList && (target.classList.contains('option-button') || target.id === 'check-answer-btn')) {
+                        isClickOnButton = true;
+                        break;
+                    }
+                    target = target.parentNode;
+                }
+
+                if (!isClickOnButton && isAnswerChecked && !cardElement.classList.contains('card-flipped')) {
+                    flipCardToBack();
+                }
+            });
+
             prevBtn.addEventListener('click', () => {
                 prevCard();
                 playSound(clickSound); // Play click sound on navigation
@@ -785,21 +862,19 @@
                 if (!appContent.classList.contains('hidden') && !isModalOpen && !isOverlayPageOpen) {
                     if (e.key === ' ' || e.key === 'Enter') {
                         e.preventDefault(); 
-                        if (currentSelectedOption !== null && !cardElement.classList.contains('card-flipped')) {
-                            checkAnswerBtn.click();
-                        } else if (cardElement.classList.contains('card-flipped')) {
-                            nextBtn.click(); // Use click() to trigger event listener (including sound)
+                        if (currentSelectedOption !== null && !isAnswerChecked) { // If option selected and not yet checked
+                            checkAnswerBtn.click(); // Click check button
+                        } else if (isAnswerChecked && !cardElement.classList.contains('card-flipped')) { // If checked and on front
+                            flipCardToBack(); // Flip to back
+                        } else if (cardElement.classList.contains('card-flipped')) { // If already on back
+                            nextBtn.click(); // Go to next card
                         }
                     }
                     if (e.key === 'ArrowLeft') {
-                        if (cardElement.classList.contains('card-flipped')) { 
-                            prevBtn.click(); // Use click() to trigger event listener (including sound)
-                        }
+                        prevBtn.click(); // Use click() to trigger event listener (including sound)
                     }
                     if (e.key === 'ArrowRight') {
-                        if (cardElement.classList.contains('card-flipped')) { 
-                            nextBtn.click(); // Use click() to trigger event listener (including sound)
-                        }
+                        nextBtn.click(); // Use click() to trigger event listener (including sound)
                     }
                 }
             });
