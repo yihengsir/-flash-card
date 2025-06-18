@@ -162,14 +162,22 @@
         <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-md w-full">
             <h2 id="completion-title" class="text-4xl font-bold text-success mb-6">Congratulations!</h2>
             <p id="completion-message" class="text-2xl text-neutral mb-8">您已提前结束练习</p>
-            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
-                <button id="view-report-btn" class="bg-primary text-white px-8 py-3 rounded-full text-lg shadow-md hover:bg-primary-dark transition duration-300 w-full md:w-auto">
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4 mb-4">
+                <button id="return-to-practice-btn" class="bg-primary text-white px-8 py-3 rounded-full text-lg shadow-md hover:bg-primary-dark transition duration-300 w-full md:w-auto">
+                    返回练习
+                </button>
+                <button id="view-report-btn" class="bg-indigo-600 text-white px-8 py-3 rounded-full text-lg shadow-md hover:bg-indigo-700 transition duration-300 w-full md:w-auto">
                     查看错题报告
                 </button>
-                <button id="start-new-session-btn" class="bg-gray-200 text-neutral px-8 py-3 rounded-full text-lg shadow-md hover:bg-gray-300 transition duration-300 w-full md:w-auto">
-                    开始新练习
+            </div>
+            <div class="flex justify-center mt-4">
+                <button id="export-data-btn" class="bg-green-500 text-white px-8 py-3 rounded-full text-lg shadow-md hover:bg-green-600 transition duration-300 w-full md:w-auto">
+                    导出学习记录
                 </button>
             </div>
+            <button id="start-new-session-btn" class="bg-gray-200 text-neutral px-8 py-3 rounded-full text-lg shadow-md hover:bg-gray-300 transition duration-300 mt-6 w-full md:w-auto">
+                开始新练习
+            </button>
         </div>
     </div>
 
@@ -270,6 +278,8 @@
         const completionMessageEl = document.getElementById('completion-message'); 
         const viewReportBtn = document.getElementById('view-report-btn');
         const startNewSessionBtn = document.getElementById('start-new-session-btn');
+        const returnToPracticeBtn = document.getElementById('return-to-practice-btn'); // New button
+        const exportDataBtn = document.getElementById('export-data-btn'); // New button
 
         // Error Report Modal Elements
         const errorReportModal = document.getElementById('error-report-modal');
@@ -607,6 +617,64 @@
             errorReportModal.classList.add('hidden');
         }
 
+        // New function: Return to practice
+        function returnToPractice() {
+            hideCompletionPage(); // Hide completion page
+            // The appContent is already shown by hideCompletionPage()
+            cardElement.classList.remove('card-flipped'); // Ensure card is front-facing
+            // No need to call renderCard() immediately if current card is already displayed
+            // If the user was on the back of the card, they'll see the front again.
+            // If they want to go to next/previous, they'll use those buttons.
+            console.log('Returning to practice from completion page.');
+        }
+
+        // New function: Export learning data
+        function exportLearningData() {
+            const now = new Date();
+            const dateStr = now.getFullYear() + '' + 
+                            String(now.getMonth() + 1).padStart(2, '0') + '' + 
+                            String(now.getDate()).padStart(2, '0');
+            const timeStr = String(now.getHours()).padStart(2, '0') + '' + 
+                            String(now.getMinutes()).padStart(2, '0') + '' + 
+                            String(now.getSeconds()).padStart(2, '0');
+            const filename = `学习记录报告_${dateStr}_${timeStr}.txt`;
+
+            const correctRate = userStats.totalAttempts === 0 ? 0 :
+                Math.round((userStats.correctAnswers / userStats.totalAttempts) * 100);
+
+            let reportContent = `学习记录报告 - ${now.toLocaleDateString()} ${now.toLocaleTimeString()}\n`;
+            reportContent += `\n--- 练习统计 ---\n`;
+            reportContent += `总词汇量: ${flashcards.length}\n`;
+            reportContent += `已掌握词汇: ${userStats.learnedWords.size} 个\n`;
+            reportContent += `正确率: ${correctRate}% (${userStats.correctAnswers} / ${userStats.totalAttempts})\n`;
+
+            if (userStats.incorrectlyAnsweredCards.size > 0) {
+                reportContent += `\n--- 错题回顾 ---\n`;
+                reportContent += `（以下是本次练习中您回答错误的词汇）\n\n`;
+                Array.from(userStats.incorrectlyAnsweredCards.values()).forEach((card, index) => {
+                    reportContent += `--- 错题 ${index + 1} ---\n`;
+                    reportContent += `英文: ${card.english}\n`;
+                    reportContent += `中文: ${card.chinese}\n`;
+                    reportContent += `例句: ${card.example}\n\n`;
+                });
+            } else {
+                reportContent += `\n--- 错题回顾 ---\n`;
+                reportContent += `恭喜您！本次练习中没有错题。\n`;
+            }
+
+            const blob = new Blob([reportContent], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            playSound(clickSound); // Play sound on export
+            console.log('Learning data exported:', filename);
+        }
+
         // Restart entire application
         function restartApp() {
             userStats.learnedWords.clear();
@@ -688,6 +756,13 @@
             startNewSessionBtn.addEventListener('click', () => {
                 restartApp();
                 playSound(clickSound); // Play click sound on new session
+            });
+            returnToPracticeBtn.addEventListener('click', () => { // New event listener
+                returnToPractice();
+                playSound(clickSound);
+            });
+            exportDataBtn.addEventListener('click', () => { // New event listener
+                exportLearningData();
             });
 
             // Error Report Modal event listeners
