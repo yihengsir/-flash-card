@@ -12,6 +12,7 @@
                 extend: {
                     colors: {
                         primary: '#4F46E5', /* 主紫色 */
+                        'primary-dark': '#4338CA', /* 新增：深紫色用于 hover 效果 */
                         secondary: '#EC4899', /* 粉色 */
                         success: '#10B981', /* 绿色 */
                         danger: '#EF4444', /* 红色 */
@@ -84,26 +85,108 @@
             .custom-scrollbar::-webkit-scrollbar-thumb:hover {
                 background: #555;
             }
+            /* Common button style for navigation/selection */
+            .nav-button, .selection-button {
+                @apply bg-primary text-white px-6 py-3 rounded-full text-lg shadow-md hover:bg-primary-dark transition duration-300 w-full text-center;
+            }
+            .selection-grid {
+                @apply grid grid-cols-1 md:grid-cols-2 gap-4 max-w-lg w-full;
+            }
         }
     </style>
 </head>
 <body class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen flex flex-col items-center justify-center p-4 font-sans text-neutral">
 
     <div id="welcome-page" class="fixed inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex flex-col items-center justify-center z-50 p-4">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-8 text-center">词汇闪卡 <br>(from 锋锋老师)</h1>
         <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm w-full">
-            <p class="text-lg text-neutral mb-4">请输入测验码：</p>
+            <h1 class="text-3xl md:text-4xl font-bold text-primary mb-6">词汇闪卡 <br>(from 锋锋老师)</h1> <p class="text-lg text-neutral mb-4">请输入测验码：</p>
             <input type="password" id="access-code-input" class="w-full p-3 border-2 border-gray-300 rounded-md text-center text-xl tracking-widest mb-4 focus:outline-none focus:border-primary" placeholder="••••">
             <p id="access-code-feedback" class="text-danger mb-4 hidden">测验码错误，请重试！</p>
-            <button id="enter-app-btn" class="bg-primary text-white px-8 py-3 rounded-full text-lg shadow-md hover:bg-primary-dark transition duration-300">
+            <button id="enter-code-btn" class="nav-button">
                 进入闪卡练习
             </button>
         </div>
     </div>
 
+    <div id="name-input-page" class="fixed inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex flex-col items-center justify-center z-40 p-4 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-sm w-full">
+            <h2 class="text-3xl font-bold text-primary mb-6">输入您的姓名</h2>
+            <p class="text-lg text-neutral mb-4">请输入您的姓名：</p>
+            <input type="text" id="user-name-input" class="w-full p-3 border-2 border-gray-300 rounded-md text-center text-xl mb-4 focus:outline-none focus:border-primary" placeholder="您的姓名">
+            <p id="name-feedback" class="text-danger mb-4 hidden">请输入您的姓名！</p>
+            <button id="enter-name-btn" class="nav-button">
+                确认
+            </button>
+        </div>
+    </div>
+
+    <div id="category-page" class="fixed inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex flex-col items-center justify-center z-30 p-4 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-md w-full">
+            <h2 class="text-3xl font-bold text-primary mb-6">选择词卡类别</h2>
+            <div class="selection-grid">
+                <button id="advanced-speaking-btn" class="nav-button">进阶口语</button>
+                <button id="toefl-btn" class="nav-button">托福</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toefl-subject-page" class="fixed inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex flex-col items-center justify-center z-30 p-4 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-md w-full">
+            <h2 class="text-3xl font-bold text-primary mb-6">选择托福科目</h2>
+            <div class="selection-grid">
+                <button data-subject="reading" class="selection-button">阅读 Reading</button>
+                <button data-subject="listening" class="selection-button">听力 Listening</button>
+                <button data-subject="speaking" class="selection-button">口语 Speaking</button>
+                <button data-subject="writing" class="selection-button">写作 Writing</button>
+            </div>
+            <button id="back-to-category-btn" class="mt-6 bg-gray-200 text-neutral px-6 py-3 rounded-full text-lg shadow-md hover:bg-gray-300 transition duration-300">
+                <i class="fa fa-arrow-left"></i> 返回
+            </button>
+        </div>
+    </div>
+
+    <div id="toefl-difficulty-page" class="fixed inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex flex-col items-center justify-center z-30 p-4 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-md w-full">
+            <h2 class="text-3xl font-bold text-primary mb-6">选择难度</h2>
+            <div class="selection-grid">
+                <button data-difficulty="foundation" class="selection-button">基础 Foundation</button>
+                <button data-difficulty="beginner" class="selection-button">初级 Beginner</button>
+                <button data-difficulty="intermediate" class="selection-button">中级 Intermediate</button>
+                <button data-difficulty="advanced" class="selection-button">高级 Advanced</button>
+            </div>
+            <button id="back-to-subject-btn" class="mt-6 bg-gray-200 text-neutral px-6 py-3 rounded-full text-lg shadow-md hover:bg-gray-300 transition duration-300">
+                <i class="fa fa-arrow-left"></i> 返回
+            </button>
+        </div>
+    </div>
+
+    <div id="toefl-content-type-page" class="fixed inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex flex-col items-center justify-center z-30 p-4 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-md w-full">
+            <h2 class="text-3xl font-bold text-primary mb-6">选择内容类型</h2>
+            <div class="selection-grid">
+                <button data-content-type="unit" class="selection-button">按照授课单元</button>
+                <button data-content-type="past-content" class="selection-button">按照往期内容</button>
+            </div>
+            <button id="back-to-difficulty-btn" class="mt-6 bg-gray-200 text-neutral px-6 py-3 rounded-full text-lg shadow-md hover:bg-gray-300 transition duration-300">
+                <i class="fa fa-arrow-left"></i> 返回
+            </button>
+        </div>
+    </div>
+
+    <div id="toefl-unit-page" class="fixed inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex flex-col items-center justify-center z-30 p-4 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-md w-full overflow-y-auto max-h-[80vh]">
+            <h2 class="text-3xl font-bold text-primary mb-6">选择单元</h2>
+            <div id="unit-buttons-container" class="selection-grid">
+                </div>
+            <button id="back-to-content-type-btn" class="mt-6 bg-gray-200 text-neutral px-6 py-3 rounded-full text-lg shadow-md hover:bg-gray-300 transition duration-300">
+                <i class="fa fa-arrow-left"></i> 返回
+            </button>
+        </div>
+    </div>
+
     <div id="app-content" class="w-full flex flex-col items-center hidden">
-        <header class="w-full max-w-2xl flex justify-between items-center mb-6 text-white">
-            <div class="text-lg font-semibold">英语口语闪卡</div>
+        <header class="w-full max-w-2xl flex justify-between items-center mb-6 text-white fixed top-4 px-4 md:px-0">
+            <div class="text-lg font-semibold" id="current-user-info"></div>
             <div class="flex items-center space-x-4">
                 <div id="card-counter" class="text-white">
                     <span id="current-card-index">1</span> / <span id="total-cards">0</span>
@@ -114,8 +197,7 @@
             </div>
         </header>
 
-        <main class="w-full max-w-2xl h-96 relative mb-8">
-            <div id="card" class="card-flip w-full h-full bg-white rounded-xl shadow-lg flex items-center justify-center p-8 transition-transform duration-600">
+        <main class="w-full max-w-2xl h-96 relative mb-8 mt-24"> <div id="card" class="card-flip w-full h-full bg-white rounded-xl shadow-lg flex items-center justify-center p-8 transition-transform duration-600">
                 <div id="card-front" class="card-front bg-white">
                     <p id="card-english" class="text-3xl font-bold mb-4 text-neutral"></p>
                     <div id="options-container" class="flex flex-col space-y-4 w-full px-8 mt-4">
@@ -190,6 +272,7 @@
             </button>
             <h2 class="text-3xl font-bold text-primary mb-6">学习统计</h2>
             <div class="mb-6">
+                <p class="text-lg text-neutral mb-2">学习者: <span id="stats-user-name" class="font-semibold"></span></p>
                 <p class="text-lg text-neutral mb-2">总词数: <span id="total-words" class="font-semibold">0</span></p>
                 <p class="text-lg text-neutral mb-2">已掌握: <span id="learned-words" class="font-semibold">0</span></p>
                 <p class="text-lg text-neutral mb-4">正确率: <span id="correct-rate" class="font-semibold">0%</span></p>
@@ -226,6 +309,7 @@
         let flashcards = [];
         let currentCardIndex = 0;
         let userStats = {
+            userName: '',
             learnedWords: new Set(),
             correctAnswers: 0,
             totalAttempts: 0,
@@ -236,12 +320,46 @@
         let currentCardIsCorrect = null;
         let isAnswerChecked = false; // New state variable: true after checking answer, before flipping
 
-        // Welcome Page Elements
+        // --- Page Elements ---
+        // Access Code Page
         const welcomePage = document.getElementById('welcome-page');
         const accessCodeInput = document.getElementById('access-code-input');
-        const enterAppBtn = document.getElementById('enter-app-btn');
+        const enterCodeBtn = document.getElementById('enter-code-btn');
         const accessCodeFeedback = document.getElementById('access-code-feedback');
-        const correctAccessCode = "1314";
+        const correctAccessCode = "1314"; // 您可以修改这个访问码
+
+        // Name Input Page
+        const nameInputPage = document.getElementById('name-input-page');
+        const userNameInput = document.getElementById('user-name-input');
+        const enterNameBtn = document.getElementById('enter-name-btn');
+        const nameFeedback = document.getElementById('name-feedback');
+        const currentUserInfoEl = document.getElementById('current-user-info');
+
+        // Category Page
+        const categoryPage = document.getElementById('category-page');
+        const advancedSpeakingBtn = document.getElementById('advanced-speaking-btn');
+        const toeflBtn = document.getElementById('toefl-btn');
+
+        // TOEFL Subject Page
+        const toeflSubjectPage = document.getElementById('toefl-subject-page');
+        const toeflSubjectButtons = document.querySelectorAll('#toefl-subject-page .selection-button');
+        const backToCategoryBtn = document.getElementById('back-to-category-btn');
+
+        // TOEFL Difficulty Page
+        const toeflDifficultyPage = document.getElementById('toefl-difficulty-page');
+        const toeflDifficultyButtons = document.querySelectorAll('#toefl-difficulty-page .selection-button');
+        const backToSubjectBtn = document.getElementById('back-to-subject-btn');
+
+        // TOEFL Content Type Page
+        const toeflContentTypePage = document.getElementById('toefl-content-type-page');
+        const toeflContentTypeButtons = document.querySelectorAll('#toefl-content-type-page .selection-button');
+        const backToContentTypeBtnFromDifficulty = document.getElementById('back-to-difficulty-btn'); // Renamed for clarity in this context
+
+        // TOEFL Unit Selection Page
+        const toeflUnitPage = document.getElementById('toefl-unit-page');
+        const unitButtonsContainer = document.getElementById('unit-buttons-container');
+        const backToContentTypeBtn = document.getElementById('back-to-content-type-btn');
+
 
         // Main App Elements
         const appContent = document.getElementById('app-content');
@@ -251,7 +369,6 @@
         const feedbackMessageEl = document.getElementById('feedback-message');
         const checkAnswerBtn = document.getElementById('check-answer-btn');
 
-        // Changed these to span IDs to separate text from icon
         const answerEnglishEl = document.getElementById('answer-english');
         const englishTextEl = document.getElementById('english-text');
         const answerChineseEl = document.getElementById('answer-chinese');
@@ -274,6 +391,7 @@
         const correctRateEl = document.getElementById('correct-rate');
         const progressBar = document.getElementById('progress-bar');
         const totalWordsModalEl = document.getElementById('total-words'); 
+        const statsUserNameEl = document.getElementById('stats-user-name');
 
         // Completion Page Elements
         const completionPage = document.getElementById('completion-page');
@@ -281,8 +399,8 @@
         const completionMessageEl = document.getElementById('completion-message'); 
         const viewReportBtn = document.getElementById('view-report-btn');
         const startNewSessionBtn = document.getElementById('start-new-session-btn');
-        const returnToPracticeBtn = document.getElementById('return-to-practice-btn'); // New button
-        const exportDataBtn = document.getElementById('export-data-btn'); // New button
+        const returnToPracticeBtn = document.getElementById('return-to-practice-btn');
+        const exportDataBtn = document.getElementById('export-data-btn');
 
         // Error Report Modal Elements
         const errorReportModal = document.getElementById('error-report-modal');
@@ -295,20 +413,32 @@
         const correctSound = document.getElementById('correctSound');
         const wrongSound = document.getElementById('wrongSound');
 
-        // Function to play sound effect
+        // --- Global State Variables for Navigation ---
+        let selectedSubject = ''; // e.g., 'reading', 'listening'
+        let selectedDifficulty = ''; // e.g., 'foundation', 'beginner'
+        let selectedContentType = ''; // 'unit' or 'past-content'
+        let selectedUnit = ''; // e.g., 'unit1'
+
+        const TOEFL_UNIT_COUNTS = {
+            'foundation': 12,
+            'beginner': 8,
+            'intermediate': 14,
+            'advanced': 12
+        };
+
+
+        // --- Utility Functions ---
         function playSound(audioElement) {
             if (audioElement) {
-                audioElement.currentTime = 0; // Rewind to the start
-                audioElement.play().catch(e => console.error("Error playing sound:", e)); // Catch potential play errors
+                audioElement.currentTime = 0;
+                audioElement.play().catch(e => console.error("Error playing sound:", e));
             }
         }
 
-        // Helper function for speaking text
         function speakText(text, lang = 'en-US') {
             if ('speechSynthesis' in window) {
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.lang = lang;
-                // Stop any current speech before starting new one
                 window.speechSynthesis.cancel(); 
                 window.speechSynthesis.speak(utterance);
             } else {
@@ -316,42 +446,16 @@
             }
         }
 
-        // Named function for English word click event
         function speakEnglishWord() {
-            speakText(englishTextEl.textContent, 'en-US'); // Use englishTextEl for content
-            playSound(clickSound); // Play click sound when word is clicked
+            speakText(englishTextEl.textContent, 'en-US');
+            playSound(clickSound);
         }
 
-        // Named function for example sentence click event
         function speakExampleSentence() {
-            speakText(exampleTextEl.textContent, 'en-US'); // Use exampleTextEl for content
-            playSound(clickSound); // Play click sound when example is clicked
+            speakText(exampleTextEl.textContent, 'en-US');
+            playSound(clickSound);
         }
 
-        // Function to start the main application
-        async function startApp() {
-            welcomePage.classList.add('hidden'); // Hide welcome page
-            appContent.classList.remove('hidden'); // Show main app content
-            await fetchFlashcards(); // Load flashcards
-        }
-
-        // Fetch flashcards data
-        async function fetchFlashcards() {
-            try {
-                const response = await fetch('flashcards_data.json');
-                flashcards = await response.json();
-                shuffleCards(flashcards);
-                renderCard();
-                updateCardCounter();
-                updateStatsDisplay(); // Initial display of stats on load
-                console.log('Flashcards loaded:', flashcards.length);
-            } catch (error) {
-                console.error('Error fetching flashcards:', error);
-                alert('加载词汇数据失败，请检查 flashcards_data.json 文件。');
-            }
-        }
-
-        // Shuffle array
         function shuffleCards(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -360,66 +464,12 @@
             return array;
         }
 
-        // Render current card (front side)
-        function renderCard() {
-            if (flashcards.length === 0) {
-                cardEnglishEl.textContent = 'No cards available.';
-                optionsContainer.innerHTML = '';
-                feedbackMessageEl.textContent = '';
-                checkAnswerBtn.classList.add('hidden');
-                return;
-            }
-
-            const currentCard = flashcards[currentCardIndex];
-            cardEnglishEl.textContent = currentCard.english;
-
-            // Clear previous options, feedback, hide check button and reset selections
-            optionsContainer.innerHTML = '';
-            feedbackMessageEl.textContent = '';
-            feedbackMessageEl.className = 'text-2xl font-bold mt-4'; // Reset class
-            checkAnswerBtn.classList.add('hidden');
-            currentSelectedOption = null;
-            currentCardIsCorrect = null; // Reset correctness flag for new card
-            isAnswerChecked = false; // Reset answer checked state
-
-            // Remove previous speech listeners from card back
-            answerEnglishEl.removeEventListener('click', speakEnglishWord);
-            answerEnglishEl.style.cursor = 'default'; 
-            answerEnglishEl.classList.remove('hover:text-primary'); 
-
-            answerExampleEl.removeEventListener('click', speakExampleSentence);
-            answerExampleEl.style.cursor = 'default'; 
-            answerExampleEl.classList.remove('hover:text-primary'); 
-
-            // Generate options (one correct, one incorrect)
-            const correctOption = currentCard.chinese;
-            const incorrectOption = getRandomDistractor(currentCard.chinese);
-            const options = shuffleCards([correctOption, incorrectOption]);
-
-            options.forEach(option => {
-                const button = document.createElement('button');
-                button.textContent = option;
-                // Removed ring-4, ring-offset-2 from initial class, will add on selection
-                button.className = 'option-button w-full bg-indigo-100 text-indigo-700 font-semibold py-3 px-6 rounded-xl shadow-md hover:bg-indigo-200 transition duration-300';
-                button.addEventListener('click', () => {
-                    selectOption(option, currentCard);
-                    playSound(clickSound); // Play click sound on option selection
-                });
-                optionsContainer.appendChild(button);
-            });
-
-            // Ensure card is flipped to the front
-            cardElement.classList.remove('card-flipped');
-            updateCardCounter();
-            console.log('Rendered card:', currentCard.english);
-        }
-
-        // Get a random Chinese translation that is not the correct answer
         function getRandomDistractor(correctAnswer) {
             const allChineseOptions = flashcards.map(card => card.chinese);
             const availableDistractors = allChineseOptions.filter(chinese => chinese !== correctAnswer);
 
             if (availableDistractors.length === 0) {
+                // Fallback distractors if no other unique Chinese options are available
                 const fallbackDistractors = ["你好", "谢谢", "再见", "对不起", "是的", "不是"];
                 return fallbackDistractors.find(d => d !== correctAnswer) || "一个错误选项";
             }
@@ -427,59 +477,233 @@
             return availableDistractors[randomIndex];
         }
 
-        // User selects an option
+        // --- Navigation/Page Display Functions ---
+        function showPage(pageElement) {
+            // List all pages that might be shown/hidden to ensure only one is active
+            const pages = [welcomePage, nameInputPage, categoryPage, toeflSubjectPage, toeflDifficultyPage, 
+                           toeflContentTypePage, toeflUnitPage, appContent, completionPage, 
+                           statsModal, errorReportModal];
+            
+            pages.forEach(page => page.classList.add('hidden')); // Hide all
+            pageElement.classList.remove('hidden'); // Show the target page
+        }
+
+        function saveUserData() {
+            localStorage.setItem('userStats_' + userStats.userName, JSON.stringify({
+                learnedWords: Array.from(userStats.learnedWords),
+                correctAnswers: userStats.correctAnswers,
+                totalAttempts: userStats.totalAttempts,
+                incorrectlyAnsweredCards: Array.from(userStats.incorrectlyAnsweredCards.entries()),
+                attemptedCardEnglishPhrases: Array.from(userStats.attemptedCardEnglishPhrases)
+            }));
+            console.log("User data saved for:", userStats.userName);
+        }
+
+        function loadUserData(userName) {
+            const savedData = localStorage.getItem('userStats_' + userName);
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                userStats.learnedWords = new Set(data.learnedWords || []);
+                userStats.correctAnswers = data.correctAnswers || 0;
+                userStats.totalAttempts = data.totalAttempts || 0;
+                userStats.incorrectlyAnsweredCards = new Map(data.incorrectlyAnsweredCards || []);
+                userStats.attemptedCardEnglishPhrases = new Set(data.attemptedCardEnglishPhrases || []);
+                console.log("User data loaded for:", userName);
+            } else {
+                // Reset stats if no data found for new user
+                userStats.learnedWords.clear();
+                userStats.correctAnswers = 0;
+                userStats.totalAttempts = 0;
+                userStats.incorrectlyAnsweredCards.clear();
+                userStats.attemptedCardEnglishPhrases.clear();
+                console.log("No data found for user:", userName, ". Initializing new stats.");
+            }
+            currentUserInfoEl.textContent = `学习者: ${userStats.userName}`;
+            statsUserNameEl.textContent = userStats.userName;
+        }
+
+        function resetCurrentSessionStats() {
+            // This function should only reset stats relevant to the *current practice session*
+            // For a "new session", we generally want to start fresh.
+            // If we want to persist *overall* stats, we'd load and update them.
+            // For now, it clears everything for a fresh start.
+            userStats.learnedWords.clear();
+            userStats.correctAnswers = 0;
+            userStats.totalAttempts = 0;
+            userStats.incorrectlyAnsweredCards.clear();
+            userStats.attemptedCardEnglishPhrases.clear();
+        }
+
+        // --- Core Flashcard Logic ---
+        async function startFlashcardSession(dataPath) {
+            showPage(appContent);
+            console.log("Loading flashcards from:", dataPath);
+            try {
+                const response = await fetch(dataPath);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                flashcards = data; 
+                if (flashcards.length === 0) {
+                    alert('加载的词汇数据为空。请检查 ' + dataPath + ' 文件。');
+                    // Determine which page to go back to based on the current dataPath context
+                    if (dataPath === 'flashcards_data.json') {
+                         showPage(categoryPage); // Back to category if advanced speaking
+                    } else {
+                        showPage(toeflUnitPage); // Back to unit selection for TOEFL paths
+                    }
+                    return;
+                }
+                console.log('Flashcards loaded:', flashcards.length);
+            } catch (error) {
+                console.error('Error fetching flashcards from ' + dataPath + ':', error);
+                alert('加载词汇数据失败，请检查 ' + dataPath + ' 文件。');
+                if (dataPath === 'flashcards_data.json') {
+                    showPage(categoryPage);
+                } else {
+                    showPage(toeflUnitPage);
+                }
+                return;
+            }
+
+            shuffleCards(flashcards);
+            currentCardIndex = 0;
+            renderCard();
+            updateCardCounter();
+            updateStatsDisplay();
+        }
+
+        async function startToeflSession(subject, difficulty, contentType, unit = null) {
+            showPage(appContent);
+            console.log(`Starting TOEFL session: Subject=${subject}, Difficulty=${difficulty}, ContentType=${contentType}, Unit=${unit}`);
+            
+            flashcards = []; // Clear previous cards
+
+            if (contentType === 'unit' && unit) {
+                const dataPath = `data/${subject}_${difficulty}_${unit}.json`;
+                try {
+                    const response = await fetch(dataPath);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    flashcards = data;
+                    if (flashcards.length === 0) {
+                        alert('该单元数据为空。请检查 ' + dataPath + ' 文件。');
+                        showPage(toeflUnitPage);
+                        return;
+                    }
+                    console.log(`Loaded ${subject}_${difficulty}_${unit}.json:`, flashcards.length);
+                } catch (error) {
+                    console.error('Error fetching TOEFL unit flashcards from ' + dataPath + ':', error);
+                    alert('加载托福单元数据失败，请检查 ' + dataPath + ' 文件。');
+                    showPage(toeflUnitPage); // Go back to unit selection
+                    return;
+                }
+            } else if (contentType === 'past-content') {
+                const unitCount = TOEFL_UNIT_COUNTS[difficulty];
+                if (!unitCount) {
+                    console.error("Invalid difficulty for unit count:", difficulty);
+                    alert("无法获取该难度的单元数量。");
+                    showPage(toeflDifficultyPage);
+                    return;
+                }
+                const promises = [];
+                for (let i = 1; i <= unitCount; i++) {
+                    const dataPath = `data/${subject}_${difficulty}_unit${i}.json`;
+                    promises.push(fetch(dataPath)
+                        .then(res => {
+                            if (!res.ok) {
+                                console.warn(`Could not load ${dataPath}: HTTP status ${res.status}`);
+                                return []; // Return empty if not found or other error
+                            }
+                            return res.json();
+                        })
+                        .catch(err => {
+                            console.warn(`Error parsing JSON from ${dataPath}:`, err);
+                            return []; // Return empty array if JSON parsing fails
+                        })
+                    );
+                }
+
+                try {
+                    const results = await Promise.all(promises);
+                    flashcards = results.flat().filter(card => card && card.english && card.chinese); // Flatten and filter out any invalid card objects
+                    if (flashcards.length === 0) {
+                        alert("未找到该科目和难度下的任何往期内容数据。请确保数据文件存在且格式正确。");
+                        showPage(toeflContentTypePage);
+                        return;
+                    }
+                    console.log(`Loaded all past content for ${subject}_${difficulty}:`, flashcards.length);
+
+                } catch (error) {
+                    console.error('Error loading all TOEFL past content:', error);
+                    alert('加载托福往期内容数据失败。');
+                    showPage(toeflContentTypePage);
+                    return;
+                }
+            } else {
+                alert("无效的内容类型或单元选择。");
+                showPage(toeflContentTypePage);
+                return;
+            }
+
+            shuffleCards(flashcards);
+            currentCardIndex = 0;
+            renderCard();
+            updateCardCounter();
+            updateStatsDisplay();
+        }
+
+        // --- Flashcard Interaction Functions ---
         function selectOption(selectedOption, currentCard) {
-            if (isAnswerChecked) return; // Prevent selection after answer is checked
+            if (isAnswerChecked) return; // Prevent selection after checking
 
             const optionButtons = optionsContainer.querySelectorAll('.option-button');
             optionButtons.forEach(button => {
-                // Reset styling for all buttons first
                 button.classList.remove('ring-4', 'ring-primary', 'ring-offset-2');
-                button.classList.remove('bg-success', 'text-white', 'border-success'); // Clear correct/wrong highlights
-                button.classList.remove('bg-danger', 'text-white', 'border-danger'); // Use danger here too for reset
-                button.classList.add('bg-indigo-100', 'text-indigo-700'); // Restore default colors
+                button.classList.remove('bg-success', 'text-white', 'border-success');
+                button.classList.remove('bg-danger', 'text-white', 'border-danger');
+                button.classList.add('bg-indigo-100', 'text-indigo-700');
             });
 
             const selectedButton = Array.from(optionButtons).find(button => button.textContent === selectedOption);
             if (selectedButton) {
-                selectedButton.classList.add('ring-4', 'ring-primary', 'ring-offset-2'); // Highlight selected
+                selectedButton.classList.add('ring-4', 'ring-primary', 'ring-offset-2');
             }
 
             currentSelectedOption = selectedOption;
             currentCardIsCorrect = (selectedOption === currentCard.chinese);
             
-            checkAnswerBtn.classList.remove('hidden'); // Show check button
+            checkAnswerBtn.classList.remove('hidden'); // Show check answer button
             console.log('Option selected:', selectedOption);
         }
 
-        // Check button clicked (displays feedback and highlights options, but does NOT flip)
-        function checkAnswer() { // Renamed from checkAndFlipCard
-            if (currentSelectedOption === null) return; // Ensure an option is selected
+        function checkAnswer() {
+            if (currentSelectedOption === null || isAnswerChecked) return; // Only allow check if an option is selected and not already checked
 
             const currentCard = flashcards[currentCardIndex];
-            isAnswerChecked = true; // Set state to answer checked
+            isAnswerChecked = true; // Mark as checked
 
-            // After checking, disable all options to prevent further interaction
             const optionButtons = optionsContainer.querySelectorAll('.option-button');
             optionButtons.forEach(button => {
-                button.disabled = true;
-                button.classList.remove('ring-4', 'ring-primary', 'ring-offset-2'); // Remove primary ring
+                button.disabled = true; // Disable all options after checking
+                button.classList.remove('ring-4', 'ring-primary', 'ring-offset-2'); // Remove selection highlight
             });
 
-            // Mark card as attempted
+            // Update user stats for the current card attempt
             userStats.attemptedCardEnglishPhrases.add(currentCard.english);
-
             userStats.totalAttempts++;
 
             if (currentCardIsCorrect) {
                 userStats.correctAnswers++;
-                userStats.learnedWords.add(currentCard.english);
-                userStats.incorrectlyAnsweredCards.delete(currentCard.english); 
+                userStats.learnedWords.add(currentCard.english); // Add to learned words
+                userStats.incorrectlyAnsweredCards.delete(currentCard.english); // Remove from incorrect if previously there
                 feedbackMessageEl.textContent = '正确!';
                 feedbackMessageEl.className = 'text-2xl font-bold mt-4 text-success';
                 playSound(correctSound); 
                 
-                // Highlight correct option in green
                 const correctButton = Array.from(optionButtons).find(button => button.textContent === currentCard.chinese);
                 if (correctButton) {
                     correctButton.classList.remove('bg-indigo-100', 'text-indigo-700', 'hover:bg-indigo-200');
@@ -487,20 +711,18 @@
                 }
             } else {
                 if (!userStats.incorrectlyAnsweredCards.has(currentCard.english)) {
-                    userStats.incorrectlyAnsweredCards.set(currentCard.english, currentCard);
+                    userStats.incorrectlyAnsweredCards.set(currentCard.english, currentCard); // Add to incorrect if not already there
                 }
-                userStats.learnedWords.delete(currentCard.english); 
+                userStats.learnedWords.delete(currentCard.english); // Remove from learned if answered incorrectly
                 feedbackMessageEl.textContent = '错误!';
                 feedbackMessageEl.className = 'text-2xl font-bold mt-4 text-danger';
                 playSound(wrongSound); 
 
-                // Highlight selected (wrong) option in RED
                 const selectedWrongButton = Array.from(optionButtons).find(button => button.textContent === currentSelectedOption);
                 if (selectedWrongButton) {
                     selectedWrongButton.classList.remove('bg-indigo-100', 'text-indigo-700', 'hover:bg-indigo-200');
-                    selectedWrongButton.classList.add('bg-danger', 'text-white', 'border-2', 'border-danger'); // Changed to bg-danger
+                    selectedWrongButton.classList.add('bg-danger', 'text-white', 'border-2', 'border-danger');
                 }
-                // Highlight correct option in green (if it's not the selected wrong one)
                 const correctButton = Array.from(optionButtons).find(button => button.textContent === currentCard.chinese);
                 if (correctButton && correctButton !== selectedWrongButton) {
                     correctButton.classList.remove('bg-indigo-100', 'text-indigo-700', 'hover:bg-indigo-200');
@@ -508,15 +730,13 @@
                 }
             }
 
-            // Hide check button after answer is revealed
-            checkAnswerBtn.classList.add('hidden'); 
+            checkAnswerBtn.classList.add('hidden'); // Hide check answer button after checking
             updateStatsDisplay();
+            saveUserData(); // Save stats after each attempt
             console.log('Answer checked. Current state:', userStats);
         }
 
-        // Function to flip card to back (called by clicking card after check)
         function flipCardToBack() {
-            // Only flip if answer is checked AND card is currently on the front
             if (isAnswerChecked && !cardElement.classList.contains('card-flipped')) {
                 const currentCard = flashcards[currentCardIndex];
                 englishTextEl.textContent = currentCard.english;
@@ -525,12 +745,11 @@
 
                 cardElement.classList.add('card-flipped');
 
-                // Make English word clickable for speech
+                // Re-bind event listeners for speech on the back of the card
                 answerEnglishEl.style.cursor = 'pointer';
                 answerEnglishEl.classList.add('hover:text-primary');
                 answerEnglishEl.addEventListener('click', speakEnglishWord);
 
-                // Make example sentence clickable for speech
                 answerExampleEl.style.cursor = 'pointer';
                 answerExampleEl.classList.add('hover:text-primary');
                 answerExampleEl.addEventListener('click', speakExampleSentence);
@@ -539,30 +758,84 @@
             }
         }
 
+        function renderCard() {
+            if (flashcards.length === 0) {
+                cardEnglishEl.textContent = '没有可用的词汇。请选择其他类别或填充数据。';
+                optionsContainer.innerHTML = '';
+                feedbackMessageEl.textContent = '';
+                checkAnswerBtn.classList.add('hidden');
+                prevBtn.disabled = true;
+                nextBtn.disabled = true;
+                return;
+            }
 
-        // Navigate to previous card
+            prevBtn.disabled = false; // Enable buttons if cards exist
+            nextBtn.disabled = false;
+
+            const currentCard = flashcards[currentCardIndex];
+            cardEnglishEl.textContent = currentCard.english;
+
+            optionsContainer.innerHTML = '';
+            feedbackMessageEl.textContent = '';
+            feedbackMessageEl.className = 'text-2xl font-bold mt-4'; // Reset feedback style
+            checkAnswerBtn.classList.add('hidden');
+            currentSelectedOption = null;
+            currentCardIsCorrect = null;
+            isAnswerChecked = false; // Reset for new card
+
+            // Remove previous event listeners and reset styles to prevent duplicates/incorrect states
+            answerEnglishEl.removeEventListener('click', speakEnglishWord);
+            answerEnglishEl.style.cursor = 'default'; 
+            answerEnglishEl.classList.remove('hover:text-primary'); 
+
+            answerExampleEl.removeEventListener('click', speakExampleSentence);
+            answerExampleEl.style.cursor = 'default'; 
+            answerExampleEl.classList.remove('hover:text-primary'); 
+
+            const correctOption = currentCard.chinese;
+            const incorrectOption = getRandomDistractor(currentCard.chinese);
+            // Ensure options are always two, and unique
+            const options = shuffleCards(Array.from(new Set([correctOption, incorrectOption])));
+
+            options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.className = 'option-button w-full bg-indigo-100 text-indigo-700 font-semibold py-3 px-6 rounded-xl shadow-md hover:bg-indigo-200 transition duration-300';
+                button.addEventListener('click', () => {
+                    selectOption(option, currentCard);
+                    playSound(clickSound);
+                });
+                optionsContainer.appendChild(button);
+            });
+
+            cardElement.classList.remove('card-flipped'); // Ensure card is on the front
+            updateCardCounter();
+            console.log('Rendered card:', currentCard.english);
+        }
+
         function prevCard() {
-            // If card is currently flipped to back, flip to front first
+            // If the card is currently flipped, flip it back first for animation.
+            // Then, after a short delay, move to the previous card.
             if (cardElement.classList.contains('card-flipped')) {
                 cardElement.classList.remove('card-flipped');
-                // Give a brief moment for flip animation before changing content
                 setTimeout(() => {
                     currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
                     renderCard();
                 }, 300); // Half of card-flip transition duration
-            } else { // If already on front or not yet checked, just change card
+            } else {
+                // If already on the front, just move to the previous card directly.
                 currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
                 renderCard();
             }
+            playSound(clickSound);
         }
-
-        // Navigate to next card, handles completion check
+        
         function nextCard() {
             // Case 1: Answer has been checked AND card is currently on the front
             // In this specific scenario, clicking "下一页" should flip the current card to its back.
             if (isAnswerChecked && !cardElement.classList.contains('card-flipped')) {
                 flipCardToBack(); // Just flip the current card to reveal answer
-                // isAnswerChecked remains true, currentCardIndex does not change.
+                playSound(clickSound); // Play sound for flip
                 return; // Exit the function, don't move to next card yet.
             }
 
@@ -576,29 +849,30 @@
                 // Give a brief moment for flip animation before changing content
                 setTimeout(() => {
                     currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+                    // Check if we've completed a full cycle (all cards attempted)
                     if (currentCardIndex === 0 && userStats.attemptedCardEnglishPhrases.size >= flashcards.length && flashcards.length > 0) {
-                        showCompletionPage(true);
+                        showCompletionPage(true); // All cards attempted
                     } else {
                         renderCard(); // Render the *new* card
                     }
                 }, 300); // Half of card-flip transition duration
             } else { // If already on front and answer was NOT checked (or just rendered a new card)
                 currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+                // Check if we've completed a full cycle (all cards attempted)
                 if (currentCardIndex === 0 && userStats.attemptedCardEnglishPhrases.size >= flashcards.length && flashcards.length > 0) {
-                    showCompletionPage(true);
+                    showCompletionPage(true); // All cards attempted
                 } else {
                     renderCard(); // Render the *new* card
                 }
             }
+            playSound(clickSound); // Play sound for navigation
         }
 
-        // Update card counter
         function updateCardCounter() {
             currentCardIndexEl.textContent = currentCardIndex + 1;
             totalCardsEl.textContent = flashcards.length;
         }
 
-        // Update statistics display (for both header and modal)
         function updateStatsDisplay() {
             const correctRate = userStats.totalAttempts === 0 ? 0 :
                 Math.round((userStats.correctAnswers / userStats.totalAttempts) * 100);
@@ -608,26 +882,24 @@
             correctRateEl.textContent = `${correctRate}%`;
             const progressPercentage = flashcards.length === 0 ? 0 : (userStats.learnedWords.size / flashcards.length) * 100;
             progressBar.style.width = `${progressPercentage}%`;
+            statsUserNameEl.textContent = userStats.userName; // Update user name in stats modal
             console.log('Updating Stats Display: Learned:', userStats.learnedWords.size, 'Total Words:', flashcards.length, 'Correct Rate:', correctRate + '%');
         }
 
-        // Show statistics modal
         function showStatsModal() {
-            updateStatsDisplay(); // Ensure stats are fresh when modal opens
-            statsModal.classList.remove('hidden');
+            updateStatsDisplay();
+            showPage(statsModal);
             console.log('Stats Modal opened.');
         }
 
-        // Hide statistics modal
         function hideStatsModal() {
             statsModal.classList.add('hidden');
             console.log('Stats Modal closed.');
         }
 
-        // Show completion page, with optional message for early exit
         function showCompletionPage(completedAll = false) { 
-            appContent.classList.add('hidden');
-            completionPage.classList.remove('hidden');
+            appContent.classList.add('hidden'); // Hide main app content
+            showPage(completionPage); // Show completion page
 
             if (completedAll) {
                 completionTitleEl.textContent = "Congratulations!";
@@ -639,16 +911,14 @@
             console.log('Showing completion page.');
         }
 
-        // Hide completion page and prepare for new session
         function hideCompletionPage() {
             completionPage.classList.add('hidden');
-            appContent.classList.remove('hidden'); // Show app content again
+            // We don't automatically show appContent here, it's handled by returnToPractice
         }
 
-        // Show error report modal
         function showErrorReport() {
-            completionPage.classList.add('hidden'); // Hide completion page
-            errorReportModal.classList.remove('hidden');
+            completionPage.classList.add('hidden'); // Hide completion page first
+            showPage(errorReportModal);
             incorrectCardsList.innerHTML = ''; // Clear previous report
 
             if (userStats.incorrectlyAnsweredCards.size === 0) {
@@ -668,35 +938,31 @@
                     `;
                     incorrectCardsList.appendChild(cardDiv);
                 });
-                // Add event listeners to all example sentences in the report
+                // Add event listeners for speech in the report
                 document.querySelectorAll('.example-in-report').forEach(exampleEl => {
                     exampleEl.addEventListener('click', () => {
-                        // Extract text from the span inside the report example
                         const exampleText = exampleEl.querySelector('.report-example-text').textContent.replace('例句: ', '');
                         speakText(exampleText, 'en-US');
-                        playSound(clickSound); // Play click sound
+                        playSound(clickSound);
                     });
                 });
             }
             console.log('Showing error report. Incorrect cards:', userStats.incorrectlyAnsweredCards.size);
         }
 
-        // Hide error report modal
         function hideErrorReport() {
             errorReportModal.classList.add('hidden');
         }
 
-        // New function: Return to practice
         function returnToPractice() {
-            hideCompletionPage(); // Hide completion page
-            // The appContent is already shown by hideCompletionPage()
-            cardElement.classList.remove('card-flipped'); // Ensure card is front-facing
-            // Re-render the current card to reset its state, options, etc.
-            renderCard(); 
+            hideCompletionPage();
+            appContent.classList.remove('hidden'); // Show main app content again
+            // Ensure card is on the front when returning to practice
+            cardElement.classList.remove('card-flipped'); 
+            renderCard(); // Re-render the current card
             console.log('Returning to practice from completion page.');
         }
 
-        // New function: Export learning data
         function exportLearningData() {
             const now = new Date();
             const dateStr = now.getFullYear() + '' + 
@@ -705,12 +971,13 @@
             const timeStr = String(now.getHours()).padStart(2, '0') + '' + 
                             String(now.getMinutes()).padStart(2, '0') + '' + 
                             String(now.getSeconds()).padStart(2, '0');
-            const filename = `学习记录报告_${dateStr}_${timeStr}.txt`;
+            const filename = `学习记录报告_${userStats.userName}_${dateStr}_${timeStr}.txt`; // Include user name
 
             const correctRate = userStats.totalAttempts === 0 ? 0 :
                 Math.round((userStats.correctAnswers / userStats.totalAttempts) * 100);
 
-            let reportContent = `学习记录报告 - ${now.toLocaleDateString()} ${now.toLocaleTimeString()}\n`;
+            let reportContent = `学习者: ${userStats.userName}\n`;
+            reportContent += `学习记录报告 - ${now.toLocaleDateString()} ${now.toLocaleTimeString()}\n`;
             reportContent += `\n--- 练习统计 ---\n`;
             reportContent += `总词汇量: ${flashcards.length}\n`;
             reportContent += `已掌握词汇: ${userStats.learnedWords.size} 个\n`;
@@ -739,59 +1006,147 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            playSound(clickSound); // Play sound on export
+            playSound(clickSound);
             console.log('Learning data exported:', filename);
         }
 
-        // Restart entire application
         function restartApp() {
-            userStats.learnedWords.clear();
-            userStats.correctAnswers = 0;
-            userStats.totalAttempts = 0;
-            userStats.incorrectlyAnsweredCards.clear(); // Clear incorrect answers for new session
-            userStats.attemptedCardEnglishPhrases.clear(); // Clear attempted cards for new session
-            shuffleCards(flashcards);
-            currentCardIndex = 0;
-            renderCard();
-            updateCardCounter();
-            updateStatsDisplay();
+            // Save current user stats before resetting for a new session
+            saveUserData(); 
+            resetCurrentSessionStats(); // Reset stats for the *new* session
+            // flashcards are not cleared here, as user might go back to the same category
+            // if flashcards should be completely reloaded, it needs to be triggered by category selection
+
+            currentCardIndex = 0; // Reset card index
+            // No need to renderCard here, as we are going back to selection page
+
+            updateCardCounter(); // Update UI to reflect reset
+            updateStatsDisplay(); // Update UI to reflect reset
+
             hideStatsModal();
             hideCompletionPage(); 
             hideErrorReport();
-            window.speechSynthesis.cancel(); // Stop any ongoing speech
-            console.log('App restarted. All stats reset.');
+            window.speechSynthesis.cancel();
+            
+            // Go back to category selection
+            showPage(categoryPage); 
+            console.log('App restarted. All session stats reset. Going to category selection.');
         }
 
-        // Bind event listeners
+        // --- Event Listeners Binding ---
         function bindEventListeners() {
-            // Welcome page event listeners
-            enterAppBtn.addEventListener('click', () => {
+            // Access Code Page
+            enterCodeBtn.addEventListener('click', () => {
                 if (accessCodeInput.value === correctAccessCode) {
-                    startApp();
-                    playSound(clickSound); // Play click sound on app entry
+                    showPage(nameInputPage); // Move to name input page
+                    playSound(clickSound);
                     accessCodeFeedback.classList.add('hidden');
+                    accessCodeInput.value = ''; // Clear code after successful entry
                 } else {
                     accessCodeFeedback.classList.remove('hidden');
-                    accessCodeInput.value = ''; // Clear input on error
-                    // No sound for wrong code
+                    accessCodeInput.value = '';
                 }
             });
 
             accessCodeInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
-                    enterAppBtn.click();
+                    enterCodeBtn.click();
                 }
             });
 
-            // Main app event listeners
-            checkAnswerBtn.addEventListener('click', checkAnswer); // Changed to checkAnswer
+            // Name Input Page
+            enterNameBtn.addEventListener('click', () => {
+                const userName = userNameInput.value.trim();
+                if (userName) {
+                    userStats.userName = userName;
+                    loadUserData(userName); // Load existing stats or initialize new for this user
+                    showPage(categoryPage); // Move to category selection
+                    playSound(clickSound);
+                    nameFeedback.classList.add('hidden');
+                } else {
+                    nameFeedback.classList.remove('hidden');
+                }
+            });
+
+            userNameInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    enterNameBtn.click();
+                }
+            });
+
+            // Category Selection Page
+            advancedSpeakingBtn.addEventListener('click', () => {
+                startFlashcardSession('flashcards_data.json'); // Load advanced speaking data
+                playSound(clickSound);
+            });
+            toeflBtn.addEventListener('click', () => {
+                showPage(toeflSubjectPage); // Move to TOEFL subject selection
+                playSound(clickSound);
+            });
+
+            // TOEFL Subject Selection Page
+            toeflSubjectButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    selectedSubject = e.target.dataset.subject;
+                    showPage(toeflDifficultyPage); // Move to difficulty selection
+                    playSound(clickSound);
+                });
+            });
+            backToCategoryBtn.addEventListener('click', () => {
+                showPage(categoryPage); // Back to category
+                playSound(clickSound);
+            });
+
+            // TOEFL Difficulty Selection Page
+            toeflDifficultyButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    selectedDifficulty = e.target.dataset.difficulty;
+                    showPage(toeflContentTypePage); // Move to content type selection
+                    playSound(clickSound);
+                });
+            });
+            backToSubjectBtn.addEventListener('click', () => {
+                showPage(toeflSubjectPage); // Back to subject
+                playSound(clickSound);
+            });
+
+            // TOEFL Content Type Selection Page
+            toeflContentTypeButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    selectedContentType = e.target.dataset.contentType;
+                    if (selectedContentType === 'unit') {
+                        generateUnitButtons(); // Generate unit buttons based on difficulty
+                        showPage(toeflUnitPage); // Move to unit selection
+                    } else if (selectedContentType === 'past-content') {
+                        // For "past-content", we directly start the session
+                        startToeflSession(selectedSubject, selectedDifficulty, selectedContentType); 
+                    }
+                    playSound(clickSound);
+                });
+            });
+            // Changed this to correct ID and function
+            backToContentTypeBtnFromDifficulty.addEventListener('click', () => {
+                showPage(toeflDifficultyPage); // Back to difficulty
+                playSound(clickSound);
+            });
+
+
+            // TOEFL Unit Selection Page
+            // Event listener for dynamically created unit buttons will be attached when they are created
+            backToContentTypeBtn.addEventListener('click', () => {
+                showPage(toeflContentTypePage);
+                playSound(clickSound);
+            });
+
+
+            // Main App Event Listeners
+            checkAnswerBtn.addEventListener('click', checkAnswer);
             
-            // New: Card click listener to flip after answer is checked
+            // Allow clicking anywhere on the card (if not a button) to flip to back after answer is checked
             cardElement.addEventListener('click', (e) => {
-                // Ensure click is not on an option button itself, or check button
-                // Check if the click target or any of its parents is an option button or check button
                 let isClickOnButton = false;
                 let target = e.target;
+                // Traverse up the DOM tree to see if the click originated from an option button or check button
                 while (target != cardElement && target != null) {
                     if (target.classList && (target.classList.contains('option-button') || target.id === 'check-answer-btn')) {
                         isClickOnButton = true;
@@ -800,99 +1155,101 @@
                     target = target.parentNode;
                 }
 
+                // If not a button click, and answer is checked, and card is on front, then flip
                 if (!isClickOnButton && isAnswerChecked && !cardElement.classList.contains('card-flipped')) {
                     flipCardToBack();
                 }
             });
 
-            prevBtn.addEventListener('click', () => {
-                prevCard();
-                playSound(clickSound); // Play click sound on navigation
-            });
-            nextBtn.addEventListener('click', () => {
-                nextCard();
-                playSound(clickSound); // Play click sound on navigation
-            });
-            restartBtn.addEventListener('click', () => {
-                restartApp();
-                playSound(clickSound); // Play click sound on restart
-            }); 
-            statsBtn.addEventListener('click', () => {
-                showStatsModal();
-                playSound(clickSound); // Play click sound on stats button
-            });
+            prevBtn.addEventListener('click', prevCard);
+            nextBtn.addEventListener('click', nextCard);
+            restartBtn.addEventListener('click', restartApp); // Changed to restartApp
+            statsBtn.addEventListener('click', showStatsModal);
             endPracticeBtn.addEventListener('click', () => {
-                showCompletionPage(false); 
-                playSound(clickSound); // Play click sound on end practice
+                showCompletionPage(false); // User ended practice early
+                playSound(clickSound);
             }); 
 
             // Stats Modal event listeners
-            closeStatsBtn.addEventListener('click', () => {
-                hideStatsModal();
-                playSound(clickSound); // Play click sound on close
-            });
-            continueBtn.addEventListener('click', () => {
-                hideStatsModal();
-                playSound(clickSound); // Play click sound on continue
-            });
+            closeStatsBtn.addEventListener('click', hideStatsModal);
+            continueBtn.addEventListener('click', hideStatsModal);
             
             // Completion Page event listeners
-            viewReportBtn.addEventListener('click', () => {
-                showErrorReport();
-                playSound(clickSound); // Play click sound on view report
-            });
-            startNewSessionBtn.addEventListener('click', () => {
-                restartApp();
-                playSound(clickSound); // Play click sound on new session
-            });
-            returnToPracticeBtn.addEventListener('click', () => { // New event listener
-                returnToPractice();
-                playSound(clickSound);
-            });
-            exportDataBtn.addEventListener('click', () => { // New event listener
-                exportLearningData();
-            });
+            viewReportBtn.addEventListener('click', showErrorReport);
+            startNewSessionBtn.addEventListener('click', restartApp); // Changed to restartApp
+            returnToPracticeBtn.addEventListener('click', returnToPractice);
+            exportDataBtn.addEventListener('click', exportLearningData);
 
             // Error Report Modal event listeners
             closeErrorReportBtn.addEventListener('click', () => {
                 hideErrorReport();
-                showCompletionPage(false); 
-                playSound(clickSound); // Play click sound on close
+                showCompletionPage(false); // Return to completion page
+                playSound(clickSound);
             });
-            closeReportAndRestartBtn.addEventListener('click', () => {
-                restartApp();
-                playSound(clickSound); // Play click sound on close & restart
-            });
+            closeReportAndRestartBtn.addEventListener('click', restartApp); // Changed to restartApp
 
-
-            // Add keyboard navigation for main app
+            // Keyboard navigation for main app
             document.addEventListener('keydown', (e) => {
+                // Check if any modal or overlay page is currently open
                 const isModalOpen = !statsModal.classList.contains('hidden') || !errorReportModal.classList.contains('hidden');
-                const isOverlayPageOpen = !welcomePage.classList.contains('hidden') || !completionPage.classList.contains('hidden');
+                const isOverlayPageOpen = !welcomePage.classList.contains('hidden') || !nameInputPage.classList.contains('hidden') || 
+                                          !categoryPage.classList.contains('hidden') || !toeflSubjectPage.classList.contains('hidden') || 
+                                          !toeflDifficultyPage.classList.contains('hidden') || !toeflContentTypePage.classList.contains('hidden') || 
+                                          !toeflUnitPage.classList.contains('hidden') || !completionPage.classList.contains('hidden');
                 
+                // Only allow keyboard navigation if main app content is visible and no overlays are open
                 if (!appContent.classList.contains('hidden') && !isModalOpen && !isOverlayPageOpen) {
                     if (e.key === ' ' || e.key === 'Enter') {
-                        e.preventDefault(); 
-                        if (currentSelectedOption !== null && !isAnswerChecked) { // If option selected and not yet checked
-                            checkAnswerBtn.click(); // Click check button
-                        } else if (isAnswerChecked && !cardElement.classList.contains('card-flipped')) { // If checked and on front
-                            flipCardToBack(); // Flip to back
-                        } else if (cardElement.classList.contains('card-flipped')) { // If already on back
-                            nextBtn.click(); // Go to next card
+                        e.preventDefault(); // Prevent scrolling for spacebar
+                        if (currentSelectedOption !== null && !isAnswerChecked) {
+                            checkAnswerBtn.click(); // If option selected, check answer
+                        } else if (isAnswerChecked && !cardElement.classList.contains('card-flipped')) {
+                            flipCardToBack(); // If answer checked, flip card
+                        } else if (cardElement.classList.contains('card-flipped')) {
+                            nextBtn.click(); // If card flipped, go to next card
                         }
                     }
                     if (e.key === 'ArrowLeft') {
-                        prevBtn.click(); // Use click() to trigger event listener (including sound)
+                        prevBtn.click();
                     }
                     if (e.key === 'ArrowRight') {
-                        nextBtn.click(); // Use click() to trigger event listener (including sound)
+                        nextBtn.click();
                     }
                 }
             });
         }
 
-        // Initialize application - only bind event listeners initially
-        document.addEventListener('DOMContentLoaded', bindEventListeners);
+        // --- Dynamic Unit Button Generation ---
+        function generateUnitButtons() {
+            unitButtonsContainer.innerHTML = ''; // Clear previous buttons
+            const unitCount = TOEFL_UNIT_COUNTS[selectedDifficulty];
+            if (!unitCount) {
+                console.error("Invalid difficulty for unit count:", selectedDifficulty);
+                alert("无法获取该难度的单元数量。");
+                showPage(toeflDifficultyPage); // Go back if no unit count defined
+                return;
+            }
+
+            for (let i = 1; i <= unitCount; i++) {
+                const button = document.createElement('button');
+                button.textContent = `单元 ${i}`;
+                button.className = 'selection-button';
+                button.dataset.unit = `unit${i}`;
+                button.addEventListener('click', (e) => {
+                    selectedUnit = e.target.dataset.unit;
+                    startToeflSession(selectedSubject, selectedDifficulty, selectedContentType, selectedUnit);
+                    playSound(clickSound);
+                });
+                unitButtonsContainer.appendChild(button);
+            }
+        }
+
+
+        // Initialize application - only bind event listeners initially and show welcome page
+        document.addEventListener('DOMContentLoaded', () => {
+            bindEventListeners();
+            showPage(welcomePage); // Start with the welcome/access code page
+        });
     </script>
 </body>
 </html>
