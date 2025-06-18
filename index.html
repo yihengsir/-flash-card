@@ -551,7 +551,10 @@
                     if (dataPath === 'flashcards_data.json') {
                          showPage(categoryPage); // Back to category if advanced speaking
                     } else {
-                        showPage(toeflUnitPage); // Back to unit selection for TOEFL paths
+                        // This else block is for TOEFL paths, but the logic here needs context from `startToeflSession`
+                        // For a general `startFlashcardSession`, we can't assume a specific TOEFL path to return to.
+                        // For now, it might be best to go back to category page or a general error page.
+                        showPage(categoryPage); 
                     }
                     return;
                 }
@@ -562,7 +565,7 @@
                 if (dataPath === 'flashcards_data.json') {
                     showPage(categoryPage);
                 } else {
-                    showPage(toeflUnitPage);
+                    showPage(categoryPage); // Fallback to category page for unknown paths
                 }
                 return;
             }
@@ -741,17 +744,20 @@
                 const currentCard = flashcards[currentCardIndex];
                 englishTextEl.textContent = currentCard.english;
                 answerChineseEl.textContent = currentCard.chinese;
-                exampleTextEl.textContent = currentCard.example;
+                answerExampleEl.textContent = currentCard.example; // Corrected to use answerExampleEl
+                exampleTextEl.textContent = currentCard.example; // Update example text span
 
                 cardElement.classList.add('card-flipped');
 
                 // Re-bind event listeners for speech on the back of the card
                 answerEnglishEl.style.cursor = 'pointer';
                 answerEnglishEl.classList.add('hover:text-primary');
+                answerEnglishEl.removeEventListener('click', speakEnglishWord); // Prevent duplicate listeners
                 answerEnglishEl.addEventListener('click', speakEnglishWord);
 
                 answerExampleEl.style.cursor = 'pointer';
                 answerExampleEl.classList.add('hover:text-primary');
+                answerExampleEl.removeEventListener('click', speakExampleSentence); // Prevent duplicate listeners
                 answerExampleEl.addEventListener('click', speakExampleSentence);
                 
                 console.log('Card flipped to back.');
@@ -784,6 +790,9 @@
             isAnswerChecked = false; // Reset for new card
 
             // Remove previous event listeners and reset styles to prevent duplicates/incorrect states
+            // It's important to remove event listeners if elements are not completely re-created.
+            // Since we re-create optionsContainer.innerHTML, old listeners on option buttons are gone.
+            // But for answer-english and answer-example (on the back of the card), they persist, so their listeners need managing.
             answerEnglishEl.removeEventListener('click', speakEnglishWord);
             answerEnglishEl.style.cursor = 'default'; 
             answerEnglishEl.classList.remove('hover:text-primary'); 
@@ -888,12 +897,17 @@
 
         function showStatsModal() {
             updateStatsDisplay();
-            showPage(statsModal);
+            statsModal.classList.remove('hidden'); // Only remove hidden from stats modal
             console.log('Stats Modal opened.');
         }
 
         function hideStatsModal() {
-            statsModal.classList.add('hidden');
+            statsModal.classList.add('hidden'); // Hide stats modal
+            appContent.classList.remove('hidden'); // **FIX: Ensure appContent is visible**
+            // Add a slight delay before rendering the card to ensure the modal is fully hidden and main content is visible
+            setTimeout(() => {
+                renderCard(); 
+            }, 50); // Small delay, e.g., 50ms, might need adjustment
             console.log('Stats Modal closed.');
         }
 
@@ -959,7 +973,10 @@
             appContent.classList.remove('hidden'); // Show main app content again
             // Ensure card is on the front when returning to practice
             cardElement.classList.remove('card-flipped'); 
-            renderCard(); // Re-render the current card
+            // FIX: Add a slight delay before rendering the card to ensure the page is fully visible
+            setTimeout(() => {
+                renderCard(); 
+            }, 50); // Small delay, e.g., 50ms, might need adjustment
             console.log('Returning to practice from completion page.');
         }
 
@@ -1023,7 +1040,7 @@
             updateCardCounter(); // Update UI to reflect reset
             updateStatsDisplay(); // Update UI to reflect reset
 
-            hideStatsModal();
+            hideStatsModal(); // Ensure modals are hidden
             hideCompletionPage(); 
             hideErrorReport();
             window.speechSynthesis.cancel();
