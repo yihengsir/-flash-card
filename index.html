@@ -516,28 +516,27 @@
 
         // Function to flip card to back (called by clicking card after check)
         function flipCardToBack() {
-            if (!isAnswerChecked || cardElement.classList.contains('card-flipped')) {
-                return; // Only flip if answer checked and currently on front
+            // Only flip if answer is checked AND card is currently on the front
+            if (isAnswerChecked && !cardElement.classList.contains('card-flipped')) {
+                const currentCard = flashcards[currentCardIndex];
+                englishTextEl.textContent = currentCard.english;
+                answerChineseEl.textContent = currentCard.chinese;
+                exampleTextEl.textContent = currentCard.example;
+
+                cardElement.classList.add('card-flipped');
+
+                // Make English word clickable for speech
+                answerEnglishEl.style.cursor = 'pointer';
+                answerEnglishEl.classList.add('hover:text-primary');
+                answerEnglishEl.addEventListener('click', speakEnglishWord);
+
+                // Make example sentence clickable for speech
+                answerExampleEl.style.cursor = 'pointer';
+                answerExampleEl.classList.add('hover:text-primary');
+                answerExampleEl.addEventListener('click', speakExampleSentence);
+                
+                console.log('Card flipped to back.');
             }
-
-            const currentCard = flashcards[currentCardIndex];
-            englishTextEl.textContent = currentCard.english;
-            answerChineseEl.textContent = currentCard.chinese;
-            exampleTextEl.textContent = currentCard.example;
-
-            cardElement.classList.add('card-flipped');
-
-            // Make English word clickable for speech
-            answerEnglishEl.style.cursor = 'pointer';
-            answerEnglishEl.classList.add('hover:text-primary');
-            answerEnglishEl.addEventListener('click', speakEnglishWord);
-
-            // Make example sentence clickable for speech
-            answerExampleEl.style.cursor = 'pointer';
-            answerExampleEl.classList.add('hover:text-primary');
-            answerExampleEl.addEventListener('click', speakExampleSentence);
-            
-            console.log('Card flipped to back.');
         }
 
 
@@ -559,7 +558,19 @@
 
         // Navigate to next card, handles completion check
         function nextCard() {
-            // If card is currently flipped to back, flip to front first
+            // Case 1: Answer has been checked AND card is currently on the front
+            // In this specific scenario, clicking "下一页" should flip the current card to its back.
+            if (isAnswerChecked && !cardElement.classList.contains('card-flipped')) {
+                flipCardToBack(); // Just flip the current card to reveal answer
+                // isAnswerChecked remains true, currentCardIndex does not change.
+                return; // Exit the function, don't move to next card yet.
+            }
+
+            // Case 2: Card is already on the back side (meaning answer was already seen)
+            // Or Case 3: Card is on the front, but answer has NOT been checked (user skipping or fresh card).
+            // In these cases, we move to the next logical card.
+
+            // If card is currently flipped to back, flip to front first (for animation)
             if (cardElement.classList.contains('card-flipped')) {
                 cardElement.classList.remove('card-flipped');
                 // Give a brief moment for flip animation before changing content
@@ -568,15 +579,15 @@
                     if (currentCardIndex === 0 && userStats.attemptedCardEnglishPhrases.size >= flashcards.length && flashcards.length > 0) {
                         showCompletionPage(true);
                     } else {
-                        renderCard();
+                        renderCard(); // Render the *new* card
                     }
                 }, 300); // Half of card-flip transition duration
-            } else { // If already on front or not yet checked, just change card
+            } else { // If already on front and answer was NOT checked (or just rendered a new card)
                 currentCardIndex = (currentCardIndex + 1) % flashcards.length;
                 if (currentCardIndex === 0 && userStats.attemptedCardEnglishPhrases.size >= flashcards.length && flashcards.length > 0) {
                     showCompletionPage(true);
                 } else {
-                    renderCard();
+                    renderCard(); // Render the *new* card
                 }
             }
         }
