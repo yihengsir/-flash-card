@@ -1,0 +1,402 @@
+[
+  {
+    "english": "hunter-gatherer",
+    "chinese": "狩猎采集者",
+    "example": "The word 'hunter-gatherer' is commonly used in academic reading."
+  },
+  {
+    "english": "alternative",
+    "chinese": "可供替代的",
+    "example": "The word 'alternative' is commonly used in academic reading."
+  },
+  {
+    "english": "emerge",
+    "chinese": "出现",
+    "example": "The word 'emerge' is commonly used in academic reading."
+  },
+  {
+    "english": "unpredictable",
+    "chinese": "不可预测的",
+    "example": "The word 'unpredictable' is commonly used in academic reading."
+  },
+  {
+    "english": "practice",
+    "chinese": "实施",
+    "example": "The word 'practice' is commonly used in academic reading."
+  },
+  {
+    "english": "succumb to",
+    "chinese": "屈从于",
+    "example": "The word 'succumb to' is commonly used in academic reading."
+  },
+  {
+    "english": "elevation",
+    "chinese": "海拔",
+    "example": "The word 'elevation' is commonly used in academic reading."
+  },
+  {
+    "english": "phase",
+    "chinese": "阶段",
+    "example": "The word 'phase' is commonly used in academic reading."
+  },
+  {
+    "english": "insufficient",
+    "chinese": "不充足的",
+    "example": "The word 'insufficient' is commonly used in academic reading."
+  },
+  {
+    "english": "entail",
+    "chinese": "涉及",
+    "example": "The word 'entail' is commonly used in academic reading."
+  },
+  {
+    "english": "ditch",
+    "chinese": "水沟",
+    "example": "The word 'ditch' is commonly used in academic reading."
+  },
+  {
+    "english": "canal",
+    "chinese": "灌溉渠",
+    "example": "The word 'canal' is commonly used in academic reading."
+  },
+  {
+    "english": "runoff",
+    "chinese": "径流",
+    "example": "The word 'runoff' is commonly used in academic reading."
+  },
+  {
+    "english": "carve",
+    "chinese": "雕刻",
+    "example": "The word 'carve' is commonly used in academic reading."
+  },
+  {
+    "english": "irrigation",
+    "chinese": "灌溉",
+    "example": "The word 'irrigation' is commonly used in academic reading."
+  },
+  {
+    "english": "pump",
+    "chinese": "泵",
+    "example": "The word 'pump' is commonly used in academic reading."
+  },
+  {
+    "english": "conservative",
+    "chinese": "保守的",
+    "example": "The word 'conservative' is commonly used in academic reading."
+  },
+  {
+    "english": "initially",
+    "chinese": "一开始地",
+    "example": "The word 'initially' is commonly used in academic reading."
+  },
+  {
+    "english": "adopt",
+    "chinese": "采取",
+    "example": "The word 'adopt' is commonly used in academic reading."
+  },
+  {
+    "english": "tempting",
+    "chinese": "诱人的",
+    "example": "The word 'tempting' is commonly used in academic reading."
+  },
+  {
+    "english": "multiply",
+    "chinese": "变多",
+    "example": "The word 'multiply' is commonly used in academic reading."
+  },
+  {
+    "english": "marginal",
+    "chinese": "边缘的",
+    "example": "The word 'marginal' is commonly used in academic reading."
+  },
+  {
+    "english": "befall",
+    "chinese": "发生在某人身上",
+    "example": "The word 'befall' is commonly used in academic reading."
+  },
+  {
+    "english": "floodplain",
+    "chinese": "河漫滩",
+    "example": "The word 'floodplain' is commonly used in academic reading."
+  },
+  {
+    "english": "adjacent",
+    "chinese": "附近的",
+    "example": "The word 'adjacent' is commonly used in academic reading."
+  },
+  {
+    "english": "exceed",
+    "chinese": "超过",
+    "example": "The word 'exceed' is commonly used in academic reading."
+  },
+  {
+    "english": "capacity",
+    "chinese": "容量",
+    "example": "The word 'capacity' is commonly used in academic reading."
+  },
+  {
+    "english": "gamble",
+    "chinese": "赌博",
+    "example": "The word 'gamble' is commonly used in academic reading."
+  },
+  {
+    "english": "collapse",
+    "chinese": "崩溃",
+    "example": "The word 'collapse' is commonly used in academic reading."
+  },
+  {
+    "english": "exhaust",
+    "chinese": "枯竭的",
+    "example": "The word 'exhaust' is commonly used in academic reading."
+  },
+  {
+    "english": "sufficiently",
+    "chinese": "充分地",
+    "example": "The word 'sufficiently' is commonly used in academic reading."
+  },
+  {
+    "english": "shift",
+    "chinese": "转换",
+    "example": "The word 'shift' is commonly used in academic reading."
+  },
+  {
+    "english": "redistribute",
+    "chinese": "重新分配",
+    "example": "The word 'redistribute' is commonly used in academic reading."
+  },
+  {
+    "english": "self-sufficient",
+    "chinese": "自给自足的",
+    "example": "The word 'self-sufficient' is commonly used in academic reading."
+  },
+  {
+    "english": "descendent",
+    "chinese": "后代",
+    "example": "The word 'descendent' is commonly used in academic reading."
+  },
+  {
+    "english": "pest",
+    "chinese": "害虫",
+    "example": "The word 'pest' is commonly used in academic reading."
+  },
+  {
+    "english": "species",
+    "chinese": "物种",
+    "example": "The word 'species' is commonly used in academic reading."
+  },
+  {
+    "english": "ground mole",
+    "chinese": "鼹鼠",
+    "example": "The word 'ground mole' is commonly used in academic reading."
+  },
+  {
+    "english": "predator",
+    "chinese": "捕食者",
+    "example": "The word 'predator' is commonly used in academic reading."
+  },
+  {
+    "english": "parasite",
+    "chinese": "寄生生物",
+    "example": "The word 'parasite' is commonly used in academic reading."
+  },
+  {
+    "english": "nonindigenous",
+    "chinese": "非本土的",
+    "example": "The word 'nonindigenous' is commonly used in academic reading."
+  },
+  {
+    "english": "eradicate",
+    "chinese": "根除",
+    "example": "The word 'eradicate' is commonly used in academic reading."
+  },
+  {
+    "english": "measure",
+    "chinese": "措施",
+    "example": "The word 'measure' is commonly used in academic reading."
+  },
+  {
+    "english": "sulfur",
+    "chinese": "硫",
+    "example": "The word 'sulfur' is commonly used in academic reading."
+  },
+  {
+    "english": "arsenic",
+    "chinese": "砷",
+    "example": "The word 'arsenic' is commonly used in academic reading."
+  },
+  {
+    "english": "fungal",
+    "chinese": "真菌的",
+    "example": "The word 'fungal' is commonly used in academic reading."
+  },
+  {
+    "english": "intend",
+    "chinese": "无意的",
+    "example": "The word 'intend' is commonly used in academic reading."
+  },
+  {
+    "english": "target",
+    "chinese": "目标",
+    "example": "The word 'target' is commonly used in academic reading."
+  },
+  {
+    "english": "eliminate",
+    "chinese": "消除",
+    "example": "The word 'eliminate' is commonly used in academic reading."
+  },
+  {
+    "english": "suppression",
+    "chinese": "抑制",
+    "example": "The word 'suppression' is commonly used in academic reading."
+  },
+  {
+    "english": "rebound",
+    "chinese": "回弹",
+    "example": "The word 'rebound' is commonly used in academic reading."
+  },
+  {
+    "english": "insidious",
+    "chinese": "危险的；潜伏的",
+    "example": "The word 'insidious' is commonly used in academic reading."
+  },
+  {
+    "english": "pesticide",
+    "chinese": "杀虫剂",
+    "example": "The word 'pesticide' is commonly used in academic reading."
+  },
+  {
+    "english": "resistance",
+    "chinese": "抵抗力",
+    "example": "The word 'resistance' is commonly used in academic reading."
+  },
+  {
+    "english": "acquire",
+    "chinese": "获得",
+    "example": "The word 'acquire' is commonly used in academic reading."
+  },
+  {
+    "english": "overcome",
+    "chinese": "克服",
+    "example": "The word 'overcome' is commonly used in academic reading."
+  },
+  {
+    "english": "evolve",
+    "chinese": "进化",
+    "example": "The word 'evolve' is commonly used in academic reading."
+  },
+  {
+    "english": "outbreak",
+    "chinese": "爆发",
+    "example": "The word 'outbreak' is commonly used in academic reading."
+  },
+  {
+    "english": "citrus",
+    "chinese": "柑橘类果实",
+    "example": "The word 'citrus' is commonly used in academic reading."
+  },
+  {
+    "english": "orchard",
+    "chinese": "果园",
+    "example": "The word 'orchard' is commonly used in academic reading."
+  },
+  {
+    "english": "caterpillar",
+    "chinese": "毛毛虫",
+    "example": "The word 'caterpillar' is commonly used in academic reading."
+  },
+  {
+    "english": "array of",
+    "chinese": "大批",
+    "example": "The word 'array of' is commonly used in academic reading."
+  },
+  {
+    "english": "habitat",
+    "chinese": "栖息地",
+    "example": "The word 'habitat' is commonly used in academic reading."
+  },
+  {
+    "english": "cactus",
+    "chinese": "仙人掌",
+    "example": "The word 'cactus' is commonly used in academic reading."
+  },
+  {
+    "english": "moth",
+    "chinese": "蛾子",
+    "example": "The word 'moth' is commonly used in academic reading."
+  },
+  {
+    "english": "prickly pear",
+    "chinese": "仙人果",
+    "example": "The word 'prickly pear' is commonly used in academic reading."
+  },
+  {
+    "english": "backfire",
+    "chinese": "适得其反",
+    "example": "The word 'backfire' is commonly used in academic reading."
+  },
+  {
+    "english": "possess",
+    "chinese": "拥有",
+    "example": "The word 'possess' is commonly used in academic reading."
+  },
+  {
+    "english": "inherent",
+    "chinese": "固有的",
+    "example": "The word 'inherent' is commonly used in academic reading."
+  },
+  {
+    "english": "assess",
+    "chinese": "评估",
+    "example": "The word 'assess' is commonly used in academic reading."
+  },
+  {
+    "english": "alien",
+    "chinese": "外来的",
+    "example": "The word 'alien' is commonly used in academic reading."
+  },
+  {
+    "english": "invader",
+    "chinese": "入侵者",
+    "example": "The word 'invader' is commonly used in academic reading."
+  },
+  {
+    "english": "entomologist",
+    "chinese": "昆虫学家",
+    "example": "The word 'entomologist' is commonly used in academic reading."
+  },
+  {
+    "english": "holistic",
+    "chinese": "整体的",
+    "example": "The word 'holistic' is commonly used in academic reading."
+  },
+  {
+    "english": "integrate",
+    "chinese": "整合",
+    "example": "The word 'integrate' is commonly used in academic reading."
+  },
+  {
+    "english": "aesthetic",
+    "chinese": "美学的",
+    "example": "The word 'aesthetic' is commonly used in academic reading."
+  },
+  {
+    "english": "mortality",
+    "chinese": "死亡率",
+    "example": "The word 'mortality' is commonly used in academic reading."
+  },
+  {
+    "english": "intensity",
+    "chinese": "强度",
+    "example": "The word 'intensity' is commonly used in academic reading."
+  },
+  {
+    "english": "tolerate",
+    "chinese": "忍受",
+    "example": "The word 'tolerate' is commonly used in academic reading."
+  },
+  {
+    "english": "derive",
+    "chinese": "获得",
+    "example": "The word 'derive' is commonly used in academic reading."
+  }
+]
