@@ -82,14 +82,6 @@
             .custom-scrollbar::-webkit-scrollbar-thumb:hover {
                 background: #555;
             }
-            /* 移除此处对 image_9cebd8.png 的引用，渐变背景直接应用于body标签的class */
-            /* body {
-                background-image: url('image_9cebd8.png'); 
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-color: #f9f9f9; 
-            } */
         }
     </style>
 </head>
@@ -133,11 +125,17 @@
                 </div>
                 <div id="card-back" class="card-back bg-neutral-light">
                     <p class="text-lg text-gray-600 mb-2">英文:</p>
-                    <p id="answer-english" class="text-2xl font-semibold mb-4 text-neutral cursor-pointer hover:text-primary transition-colors duration-200"></p>
+                    <p id="answer-english" class="text-2xl font-semibold mb-4 text-neutral cursor-pointer hover:text-primary transition-colors duration-200 flex items-center justify-center gap-2">
+                        <span id="english-text"></span>
+                        <i class="fa fa-volume-up"></i>
+                    </p>
                     <p class="text-lg text-gray-600 mb-2">中文:</p>
                     <p id="answer-chinese" class="text-2xl font-semibold mb-4 text-neutral"></p>
                     <p class="text-lg text-gray-600 mb-2">例句:</p>
-                    <p id="answer-example" class="text-xl italic text-gray-700 cursor-pointer hover:text-primary transition-colors duration-200"></p>
+                    <p id="answer-example" class="text-xl italic text-gray-700 cursor-pointer hover:text-primary transition-colors duration-200 flex items-center justify-center gap-2">
+                        <span id="example-text"></span>
+                        <i class="fa fa-volume-up"></i>
+                    </p>
                 </div>
             </div>
         </main>
@@ -242,9 +240,12 @@
         const feedbackMessageEl = document.getElementById('feedback-message');
         const checkAnswerBtn = document.getElementById('check-answer-btn');
 
+        // Changed these to span IDs to separate text from icon
         const answerEnglishEl = document.getElementById('answer-english');
+        const englishTextEl = document.getElementById('english-text');
         const answerChineseEl = document.getElementById('answer-chinese');
-        const answerExampleEl = document.getElementById('answer-example'); // 获取例句元素
+        const answerExampleEl = document.getElementById('answer-example'); 
+        const exampleTextEl = document.getElementById('example-text');
 
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
@@ -304,13 +305,13 @@
 
         // Named function for English word click event
         function speakEnglishWord() {
-            speakText(answerEnglishEl.textContent, 'en-US');
+            speakText(englishTextEl.textContent, 'en-US'); // Use englishTextEl for content
             playSound(clickSound); // Play click sound when word is clicked
         }
 
         // Named function for example sentence click event
         function speakExampleSentence() {
-            speakText(answerExampleEl.textContent, 'en-US');
+            speakText(exampleTextEl.textContent, 'en-US'); // Use exampleTextEl for content
             playSound(clickSound); // Play click sound when example is clicked
         }
 
@@ -368,6 +369,7 @@
             currentCardIsCorrect = null; // Reset correctness flag for new card
 
             // Remove previous speech listeners from card back
+            // Only remove from the main container (answerEnglishEl/answerExampleEl)
             answerEnglishEl.removeEventListener('click', speakEnglishWord);
             answerEnglishEl.style.cursor = 'default'; // Reset cursor
             answerEnglishEl.classList.remove('hover:text-primary'); // Remove hover effect
@@ -465,9 +467,10 @@
                 playSound(wrongSound); // Play wrong sound
             }
 
-            answerEnglishEl.textContent = currentCard.english;
+            // Set text content for the spans, not the parent <p>
+            englishTextEl.textContent = currentCard.english;
             answerChineseEl.textContent = currentCard.chinese;
-            answerExampleEl.textContent = currentCard.example;
+            exampleTextEl.textContent = currentCard.example;
 
             cardElement.classList.add('card-flipped');
             checkAnswerBtn.classList.add('hidden');
@@ -579,15 +582,18 @@
                     cardDiv.innerHTML = `
                         <p class="text-lg font-semibold text-red-800">英文: ${card.english}</p>
                         <p class="text-lg text-neutral-700">中文: ${card.chinese}</p>
-                        <p class="text-md italic text-gray-600 cursor-pointer hover:text-primary transition-colors duration-200 example-in-report">例句: ${card.example}</p>
+                        <p class="text-md italic text-gray-600 cursor-pointer hover:text-primary transition-colors duration-200 flex items-center justify-center gap-2 example-in-report">
+                            <span class="report-example-text">例句: ${card.example}</span>
+                            <i class="fa fa-volume-up"></i>
+                        </p>
                     `;
                     incorrectCardsList.appendChild(cardDiv);
                 });
                 // Add event listeners to all example sentences in the report
                 document.querySelectorAll('.example-in-report').forEach(exampleEl => {
                     exampleEl.addEventListener('click', () => {
-                        // Extract just the example text, remove "例句: " prefix
-                        const exampleText = exampleEl.textContent.replace('例句: ', '');
+                        // Extract text from the span inside the report example
+                        const exampleText = exampleEl.querySelector('.report-example-text').textContent.replace('例句: ', '');
                         speakText(exampleText, 'en-US');
                         playSound(clickSound); // Play click sound
                     });
