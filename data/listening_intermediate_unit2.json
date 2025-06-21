@@ -2,221 +2,311 @@
   {
     "english": "Mercury",
     "chinese": "水星；水银",
-    "example": "Mercury is the closest planet to the Sun and has extreme temperature variations."
+    "example": "Mercury is the closest planet to the Sun."
   },
   {
     "english": "Venus",
     "chinese": "金星",
-    "example": "Venus is often called Earth's sister planet due to its similar size."
+    "example": "Venus is often called the 'Evening Star'."
+  },
+  {
+    "english": "technique",
+    "chinese": "技法；技艺",
+    "example": "The artist's unique technique makes her paintings stand out."
+  },
+  {
+    "english": "cotton",
+    "chinese": "棉花",
+    "example": "Soft cotton is used to make comfortable T - shirts."
+  },
+  {
+    "english": "fiber",
+    "chinese": "纤维",
+    "example": "Dietary fiber is good for our digestive system."
+  },
+  {
+    "english": "textile",
+    "chinese": "纺织品",
+    "example": "The town is famous for its high - quality textiles."
   },
   {
     "english": "organ",
     "chinese": "风琴",
-    "example": "The cathedral's grand organ filled the space with majestic music."
+    "example": "The church has a beautiful pipe organ."
+  },
+  {
+    "english": "mimic",
+    "chinese": "模仿",
+    "example": "Some birds can mimic human speech."
+  },
+  {
+    "english": "affluence",
+    "chinese": "富裕",
+    "example": "The neighborhood shows signs of affluence with large houses and expensive cars."
   },
   {
     "english": "spice",
     "chinese": "香料",
-    "example": "Traders imported exotic spices from Asia along ancient trade routes."
+    "example": "Cinnamon is a popular spice used in baking."
+  },
+  {
+    "english": "spicy",
+    "chinese": "辛辣的",
+    "example": "I love eating spicy food, like chili peppers."
   },
   {
     "english": "literally",
     "chinese": "实际上的",
-    "example": "The term 'planet' literally means 'wanderer' in ancient Greek."
+    "example": "I was literally speechless when I heard the news."
+  },
+  {
+    "english": "dominate",
+    "chinese": "支配",
+    "example": "Large companies often dominate the market."
+  },
+  {
+    "english": "rare",
+    "chinese": "罕见的",
+    "example": "This is a rare species of flower found only in the rainforest."
   },
   {
     "english": "rarity",
     "chinese": "稀有性",
-    "example": "The discovery of water on Mercury adds to its scientific rarity."
+    "example": "The rarity of the diamond makes it very valuable."
   },
   {
     "english": "exotic",
     "chinese": "奇异的",
-    "example": "Venus has an exotic atmosphere composed mainly of carbon dioxide."
+    "example": "We visited an exotic island with beautiful beaches."
   },
   {
-    "english": "imaging",
-    "chinese": "成像",
-    "example": "Advanced imaging techniques help scientists study distant planets."
+    "english": "fragrance",
+    "chinese": "香味",
+    "example": "The fragrance of the roses filled the garden."
   },
   {
-    "english": "expressionism",
-    "chinese": "表现主义",
-    "example": "The artist's work combines elements of expressionism to convey emotion."
+    "english": "carbon dioxide",
+    "chinese": "二氧化碳",
+    "example": "Plants absorb carbon dioxide and release oxygen."
   },
   {
-    "english": "bold",
-    "chinese": "大胆的",
-    "example": "The sculptor made bold choices in shaping the marble figure."
+    "english": "sulfuric acid",
+    "chinese": "硫酸",
+    "example": "Sulfuric acid is used in many industrial processes."
   },
   {
-    "english": "stretch",
-    "chinese": "拉伸",
-    "example": "The dancer's ability to stretch her body impressed the audience."
+    "english": "visible",
+    "chinese": "看得见的",
+    "example": "The stars are only visible on clear nights."
   },
   {
-    "english": "figure",
-    "chinese": "身材",
-    "example": "The ancient statue depicts a figure with idealized proportions."
-  },
-  {
-    "english": "revolve",
-    "chinese": "旋转",
-    "example": "Planets revolve around stars due to gravitational forces."
-  },
-  {
-    "english": "make sense",
-    "chinese": "说得通，有意义",
-    "example": "The theory of planetary formation makes sense of Mercury's unique features."
-  },
-  {
-    "english": "work(s)",
-    "chinese": "作品",
-    "example": "The artist's works often explore themes of space and celestial bodies."
-  },
-  {
-    "english": "prevail",
-    "chinese": "变得流行",
-    "example": "Expressionism began to prevail in art during the early 20th century."
-  },
-  {
-    "english": "effective",
-    "chinese": "有效的",
-    "example": "Scientists use effective imaging methods to study planetary surfaces."
-  },
-  {
-    "english": "import",
-    "chinese": "进口",
-    "example": "Ancient civilizations imported spices from distant lands for trade."
-  },
-  {
-    "english": "inspire",
-    "chinese": "激励; 鼓舞;",
-    "example": "The beauty of Venus has inspired countless poems and paintings."
-  },
-  {
-    "english": "mythical",
-    "chinese": "神话的",
-    "example": "Mercury was named after the mythical Roman messenger god."
-  },
-  {
-    "english": "module",
-    "chinese": "模块",
-    "example": "Spacecraft often consist of multiple modules for different functions."
+    "english": "radar",
+    "chinese": "雷达",
+    "example": "The radar detected an approaching aircraft."
   },
   {
     "english": "satellite",
     "chinese": "卫星",
-    "example": "Earth has one natural satellite, the Moon."
+    "example": "The satellite orbits the Earth every 24 hours."
+  },
+  {
+    "english": "image",
+    "chinese": "图像；形象",
+    "example": "The artist created a beautiful image of a sunset."
+  },
+  {
+    "english": "imaging",
+    "chinese": "成像",
+    "example": "Medical imaging techniques help doctors diagnose illnesses."
+  },
+  {
+    "english": "realism",
+    "chinese": "现实主义",
+    "example": "The novel is known for its gritty realism."
+  },
+  {
+    "english": "expressionism",
+    "chinese": "表现主义",
+    "example": "Expressionism in art often uses bold colors and distorted forms."
+  },
+  {
+    "english": "bold",
+    "chinese": "大胆的",
+    "example": "She made a bold decision to start her own business."
+  },
+  {
+    "english": "stretch",
+    "chinese": "拉伸",
+    "example": "Stretch your legs before going for a long run."
+  },
+  {
+    "english": "figure",
+    "chinese": "身材",
+    "example": "He has a very athletic figure."
+  },
+  {
+    "english": "convey",
+    "chinese": "传达",
+    "example": "A smile can convey happiness and friendliness."
+  },
+  {
+    "english": "revolve",
+    "chinese": "旋转",
+    "example": "The Earth revolves around the Sun."
+  },
+  {
+    "english": "make sense",
+    "chinese": "说得通，有意义",
+    "example": "Your explanation doesn't make sense. Can you try again?"
+  },
+  {
+    "english": "work(s)",
+    "chinese": "作品",
+    "example": "The artist's latest works are on display at the gallery."
+  },
+  {
+    "english": "prevail",
+    "chinese": "变得流行",
+    "example": "A new fashion trend is starting to prevail among young people."
+  },
+  {
+    "english": "origin",
+    "chinese": "起源",
+    "example": "Scientists are studying the origin of the universe."
+  },
+  {
+    "english": "effective",
+    "chinese": "有效的；",
+    "example": "This new medicine is very effective in treating the disease."
+  },
+  {
+    "english": "import",
+    "chinese": "进口",
+    "example": "The country imports a lot of foreign cars."
+  },
+  {
+    "english": "inspire",
+    "chinese": "激励；鼓舞；",
+    "example": "Her speech inspired the audience to take action."
+  },
+  {
+    "english": "mythical",
+    "chinese": "神话的",
+    "example": "Unicorns are mythical creatures from folklore."
+  },
+  {
+    "english": "module",
+    "chinese": "模块",
+    "example": "The software is made up of several different modules."
   },
   {
     "english": "philosopher",
     "chinese": "哲学家",
-    "example": "Ancient philosophers debated the nature of the planets."
+    "example": "Plato was a famous ancient Greek philosopher."
   },
   {
     "english": "estimate",
     "chinese": "估计",
-    "example": "Scientists estimate Mercury's core makes up about 85% of its radius."
+    "example": "We need to estimate the cost of the project before starting."
   },
   {
     "english": "orient",
     "chinese": "朝向",
-    "example": "Early navigators used the stars to orient themselves at sea."
+    "example": "The house is oriented to face the morning sun."
   },
   {
     "english": "navigator",
     "chinese": "航行者",
-    "example": "Ancient Polynesians were skilled navigators who traveled vast oceans."
+    "example": "The experienced navigator led the ship safely through the storm."
   },
   {
     "english": "overhead",
     "chinese": "头上方的",
-    "example": "The overhead view of Mercury's surface reveals numerous impact craters."
+    "example": "There's an overhead light in the room that needs to be replaced."
   },
   {
     "english": "latitude",
     "chinese": "纬度",
-    "example": "The equator is at 0 degrees latitude on Earth."
+    "example": "We can determine a location's position using latitude and longitude."
   },
   {
     "english": "host",
-    "chinese": "寄主，宿主",
-    "example": "A planet can host various forms of life if conditions are suitable."
+    "chinese": "寄主，宿主；",
+    "example": "The tree is a host for many different types of insects."
   },
   {
     "english": "relatively",
     "chinese": "相对地",
-    "example": "Mercury is relatively small compared to other planets in our solar system."
+    "example": "The task is relatively easy if you follow the instructions."
   },
   {
     "english": "orbit",
-    "chinese": "围绕…运动",
-    "example": "The Moon orbits Earth approximately once every 27.3 days."
+    "chinese": "围绕……运动；",
+    "example": "The moon orbits the Earth."
   },
   {
     "english": "solar",
     "chinese": "太阳系",
-    "example": "The solar system consists of the Sun and all the objects that orbit it."
+    "example": "The solar system consists of the Sun and the planets."
   },
   {
     "english": "dwarf star",
     "chinese": "矮星",
-    "example": "Our Sun is classified as a yellow dwarf star."
+    "example": "A dwarf star is smaller and dimmer than a regular star."
   },
   {
     "english": "authority",
     "chinese": "权威",
-    "example": "Experts in astronomy are considered authorities on planetary science."
+    "example": "The professor is an authority on ancient history."
   },
   {
     "english": "carve",
     "chinese": "雕刻",
-    "example": "Artisans carved intricate designs into the marble statue."
+    "example": "The artist will carve a statue out of the block of marble."
   },
   {
     "english": "expert",
     "chinese": "专家",
-    "example": "Planetary geologists are experts in studying the surfaces of planets."
+    "example": "We hired an expert to fix the computer system."
   },
   {
     "english": "extensive",
     "chinese": "广泛的",
-    "example": "Scientists have conducted extensive research on Venus' atmosphere."
+    "example": "The company has an extensive network of offices around the world."
   },
   {
     "english": "armor",
     "chinese": "盔甲",
-    "example": "The ancient warrior's armor was made of metal and leather."
+    "example": "The knight wore heavy armor into battle."
   },
   {
     "english": "emperor",
     "chinese": "帝王",
-    "example": "The emperor commissioned many grand statues and works of art."
+    "example": "The emperor ruled over a large empire."
   },
   {
     "english": "marble",
     "chinese": "大理石",
-    "example": "Michelangelo's David is a famous sculpture carved from marble."
+    "example": "The building's exterior is made of white marble."
   },
   {
     "english": "statue",
     "chinese": "雕像",
-    "example": "The statue of Venus de Milo is a renowned ancient Greek artwork."
+    "example": "There's a statue of a famous leader in the town square."
   },
   {
     "english": "cloak",
     "chinese": "斗篷",
-    "example": "The figure in the statue wears a flowing cloak that adds to its drama."
+    "example": "The wizard wore a dark cloak and a pointed hat."
   },
   {
     "english": "glimpse",
     "chinese": "一瞥",
-    "example": "We got a glimpse of Mercury's surface during the spacecraft flyby."
+    "example": "I caught a glimpse of a rare bird in the forest."
   },
   {
     "english": "virtue",
     "chinese": "美德",
-    "example": "The philosopher emphasized the importance of virtues like wisdom and courage."
+    "example": "Honesty is a virtue that everyone should practice."
   }
 ]

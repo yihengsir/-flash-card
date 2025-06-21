@@ -1,262 +1,362 @@
 [
   {
+    "english": "steel",
+    "chinese": "钢铁",
+    "example": "The bridge is made of steel."
+  },
+  {
+    "english": "rope",
+    "chinese": "绳子",
+    "example": "He tied the package with a rope."
+  },
+  {
+    "english": "gossip",
+    "chinese": "说闲话，说长道短",
+    "example": "We shouldn't gossip about others."
+  },
+  {
+    "english": "flexible",
+    "chinese": "灵活的",
+    "example": "This schedule is very flexible."
+  },
+  {
+    "english": "extinct",
+    "chinese": "灭绝的",
+    "example": "Dinosaurs are extinct animals."
+  },
+  {
+    "english": "play a role in",
+    "chinese": "扮演……角色",
+    "example": "Plants play a role in the ecosystem."
+  },
+  {
+    "english": "pivotal",
+    "chinese": "重要的",
+    "example": "This decision is pivotal for our project."
+  },
+  {
+    "english": "wetland",
+    "chinese": "湿地",
+    "example": "Wetlands are important habitats for birds."
+  },
+  {
+    "english": "sponge",
+    "chinese": "海绵",
+    "example": "Use a sponge to clean the table."
+  },
+  {
+    "english": "agency employee",
+    "chinese": "机构雇员",
+    "example": "The agency employee helped us with the paperwork."
+  },
+  {
+    "english": "on behalf of",
+    "chinese": "代表",
+    "example": "He spoke on behalf of the team."
+  },
+  {
+    "english": "seemingly irrelevant",
+    "chinese": "似乎无关紧要",
+    "example": "Don't ignore seemingly irrelevant details."
+  },
+  {
+    "english": "evolution",
+    "chinese": "进化",
+    "example": "The theory of evolution explains species' development."
+  },
+  {
     "english": "evolutionary",
     "chinese": "进化相关的",
-    "example": "The study of fossils provides insights into evolutionary changes in species over time."
+    "example": "This is an evolutionary advantage for the species."
+  },
+  {
+    "english": "shift from A to B",
+    "chinese": "从A转换到B",
+    "example": "We need to shift from old methods to new ones."
+  },
+  {
+    "english": "gravity",
+    "chinese": "引力",
+    "example": "Gravity keeps us on the Earth."
   },
   {
     "english": "gravitational",
-    "chinese": "引力的; 重力引起的",
-    "example": "The gravitational pull of the Moon affects Earth's tides and ocean currents."
+    "chinese": "引力的；重力引起的",
+    "example": "The gravitational force is strong here."
+  },
+  {
+    "english": "oval",
+    "chinese": "椭圆的",
+    "example": "The mirror has an oval shape."
+  },
+  {
+    "english": "refuge",
+    "chinese": "庇护所",
+    "example": "The cave served as a refuge during the storm."
+  },
+  {
+    "english": "restore",
+    "chinese": "恢复",
+    "example": "We need to restore the old building."
+  },
+  {
+    "english": "potential",
+    "chinese": "潜能，潜力",
+    "example": "He has great potential in music."
+  },
+  {
+    "english": "ecological",
+    "chinese": "生态学的",
+    "example": "We should protect the ecological balance."
   },
   {
     "english": "genre",
     "chinese": "体裁",
-    "example": "Science fiction is a popular genre that explores hypothetical scientific advancements."
+    "example": "This book belongs to the science fiction genre."
   },
   {
     "english": "interact with",
     "chinese": "互动",
-    "example": "Children learn social skills by interacting with their peers in playgrounds."
+    "example": "Children need to interact with their peers."
   },
   {
     "english": "critic",
     "chinese": "批评家，评论家",
-    "example": "The film was praised by critics for its innovative storytelling and cinematography."
+    "example": "The film critic wrote a positive review."
   },
   {
     "english": "structured",
     "chinese": "结构化的",
-    "example": "A structured learning plan helps students stay focused and achieve academic goals."
+    "example": "The training program is highly structured."
   },
   {
     "english": "radical",
     "chinese": "根本的；激进的",
-    "example": "The company implemented radical changes to its management structure to boost efficiency."
+    "example": "His radical ideas caused controversy."
   },
   {
     "english": "experimental",
     "chinese": "实验性的",
-    "example": "The artist's experimental style combines traditional painting with digital technology."
+    "example": "This is an experimental project."
   },
   {
     "english": "predecessor",
     "chinese": "前身",
-    "example": "This new smartphone model has improved features compared to its predecessor."
+    "example": "The new model is better than its predecessor."
   },
   {
     "english": "improvise",
     "chinese": "即兴发挥",
-    "example": "Musicians often improvise solos during jazz performances to showcase creativity."
+    "example": "The musician can improvise beautiful melodies."
   },
   {
     "english": "improvisational",
     "chinese": "即兴发挥的",
-    "example": "The theater group is known for its improvisational comedy shows without scripted dialogues."
+    "example": "This is an improvisational performance."
   },
   {
     "english": "intangible",
     "chinese": "无形的",
-    "example": "Trust and creativity are intangible assets that drive team collaboration."
+    "example": "Goodwill is an intangible asset."
   },
   {
     "english": "attribute",
     "chinese": "特质，特点",
-    "example": "Patience is a key attribute for anyone working in customer service roles."
+    "example": "Honesty is a valuable attribute."
   },
   {
     "english": "affect and inspire",
     "chinese": "影响和激发",
-    "example": "Great leaders have the ability to affect and inspire others through their actions."
+    "example": "Art can affect and inspire people."
   },
   {
     "english": "violate",
     "chinese": "违反",
-    "example": "Companies that violate environmental regulations face heavy fines and legal consequences."
+    "example": "Don't violate the traffic rules."
   },
   {
     "english": "maxim",
     "chinese": "法则",
-    "example": "The maxim 'less is more' is often applied in minimalist design aesthetics."
+    "example": "A famous maxim is 'Honesty is the best policy'."
   },
   {
     "english": "applicant",
     "chinese": "申请人",
-    "example": "Each applicant must submit a resume and cover letter with their job application."
+    "example": "The applicant is very qualified for the job."
   },
   {
     "english": "supervision",
     "chinese": "监督",
-    "example": "Children should be under adult supervision when using swimming pools."
+    "example": "The project needs strict supervision."
   },
   {
     "english": "a letter of recommendation",
     "chinese": "推荐信",
-    "example": "Graduate school applications typically require a letter of recommendation from professors."
+    "example": "You need a letter of recommendation for the application."
   },
   {
     "english": "principle",
     "chinese": "原则",
-    "example": "Honesty is a fundamental principle that guides her decision-making in both work and life."
+    "example": "We should follow the principle of fairness."
   },
   {
     "english": "dress neatly",
     "chinese": "打扮很干净",
-    "example": "Job seekers are advised to dress neatly for interviews to make a good first impression."
+    "example": "Please dress neatly for the interview."
   },
   {
     "english": "contribute to",
     "chinese": "有助于",
-    "example": "Regular exercise and a balanced diet contribute to better physical and mental health."
+    "example": "Exercise contributes to good health."
   },
   {
     "english": "quality",
     "chinese": "品格，品质",
-    "example": "Compassion is a quality that allows people to connect with others empathetically."
+    "example": "She has a lot of good qualities."
   },
   {
     "english": "qualified",
     "chinese": "够格的，有资格的",
-    "example": "Only qualified engineers with relevant experience can apply for this advanced position."
+    "example": "He is qualified for the position."
   },
   {
     "english": "subtle",
     "chinese": "微妙的",
-    "example": "The painting's subtle color variations create a sense of depth and movement."
+    "example": "There is a subtle difference between the two."
   },
   {
     "english": "sarcasm/irony",
     "chinese": "讽刺",
-    "example": "His use of sarcasm often makes it difficult for others to understand his true intentions."
+    "example": "His words were full of sarcasm/irony."
   },
   {
     "english": "capacity",
     "chinese": "容量",
-    "example": "The new water tank has a capacity to store 10,000 liters for the entire community."
+    "example": "The tank has a large capacity."
   },
   {
-    "english": "perceived",
+    "english": "perceive",
     "chinese": "察觉到",
-    "example": "She perceived a sense of tension in the room during the important business meeting."
+    "example": "We perceive colors with our eyes."
   },
   {
     "english": "solution",
     "chinese": "解决方案",
-    "example": "Scientists are working on a solution to reduce plastic waste in ocean ecosystems."
+    "example": "We need a solution to this problem."
   },
   {
     "english": "distraction",
     "chinese": "使人分心的事",
-    "example": "Turning off notifications can help eliminate distractions while working on complex tasks."
+    "example": "Social media can be a distraction."
   },
   {
     "english": "ignore",
     "chinese": "忽视",
-    "example": "It's unwise to ignore warning signs of health issues and delay seeking medical advice."
+    "example": "Don't ignore the warning signs."
   },
   {
     "english": "convey",
     "chinese": "输送",
-    "example": "Poets use words to convey complex emotions that are difficult to express directly."
+    "example": "Words can convey emotions."
   },
   {
     "english": "orbit",
     "chinese": "轨道",
-    "example": "Earth takes approximately 365 days to complete one orbit around the Sun."
+    "example": "The Earth moves in an orbit around the Sun."
   },
   {
     "english": "former",
     "chinese": "以前的",
-    "example": "The former president returned to public life to advocate for environmental causes."
+    "example": "My former boss was very nice."
   },
   {
     "english": "humor",
     "chinese": "幽默",
-    "example": "His dry humor often makes people laugh even in serious conversations."
+    "example": "His humor makes him popular."
   },
   {
     "english": "impression",
     "chinese": "印象",
-    "example": "The first impression of a book's cover can influence a reader's decision to purchase it."
+    "example": "First impressions are important."
   },
   {
     "english": "decline",
     "chinese": "减少",
-    "example": "There has been a steady decline in the number of bees, threatening global food security."
+    "example": "The number of visitors is in decline."
   },
   {
     "english": "disruptive",
     "chinese": "破坏性的",
-    "example": "The storm caused disruptive power outages across the entire region."
+    "example": "The storm was disruptive to the city."
   },
   {
     "english": "overwhelming",
     "chinese": "压倒性的",
-    "example": "The team received overwhelming support from fans during the championship game."
+    "example": "The response was overwhelming."
   },
   {
     "english": "organism",
     "chinese": "生物",
-    "example": "Microscopic organisms in the soil play a vital role in nutrient cycling."
+    "example": "A plant is a living organism."
   },
   {
     "english": "coral reef",
     "chinese": "珊瑚礁",
-    "example": "Coral reefs provide habitats for thousands of marine species and protect coastlines from erosion."
+    "example": "Coral reefs are home to many marine creatures."
   },
   {
     "english": "deplete",
     "chinese": "消耗",
-    "example": "Overfishing can deplete fish populations and disrupt ocean ecosystems."
+    "example": "We must not deplete natural resources."
   },
   {
     "english": "algae",
     "chinese": "藻类",
-    "example": "Algae blooms in lakes can be harmful to aquatic life due to oxygen depletion."
+    "example": "Algae can grow in water."
   },
   {
     "english": "organic",
     "chinese": "有机的",
-    "example": "Organic farming avoids the use of synthetic pesticides and promotes sustainable agriculture."
+    "example": "Organic food is very popular now."
   },
   {
     "english": "moisture",
     "chinese": "湿润，水分",
-    "example": "Plants absorb moisture from the soil through their roots to support growth."
+    "example": "The soil needs moisture for plants."
   },
   {
     "english": "soak",
     "chinese": "浸泡",
-    "example": "Soaking beans overnight makes them easier to cook and digest."
+    "example": "Soak the clothes in water before washing."
   },
   {
     "english": "migration",
     "chinese": "迁移",
-    "example": "Bird migration patterns are influenced by seasonal changes in temperature and food availability."
+    "example": "Bird migration is a amazing phenomenon."
   },
   {
     "english": "choke",
     "chinese": "(使)窒息",
-    "example": "Plastic waste in the ocean can choke marine animals that mistake it for food."
+    "example": "Don't choke on your food."
   },
   {
     "english": "viable",
     "chinese": "可行的",
-    "example": "Solar power is a viable alternative energy source for reducing carbon emissions."
+    "example": "This plan is not viable."
   },
   {
     "english": "advocate",
     "chinese": "支持者",
-    "example": "She is a passionate advocate for human rights and social justice issues."
+    "example": "He is an advocate for environmental protection."
   },
   {
     "english": "cite",
     "chinese": "引用",
-    "example": "Academic papers must cite sources to give credit to original researchers."
+    "example": "Please cite your sources in the paper."
   },
   {
     "english": "conceivable",
     "chinese": "可以想象的",
-    "example": "It's conceivable that renewable energy will replace fossil fuels in the next few decades."
+    "example": "It's conceivable that he will win the race."
   }
 ]

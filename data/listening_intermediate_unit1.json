@@ -1,167 +1,267 @@
 [
   {
-    "english": "well-documented",
-    "chinese": "被广泛记录的",
-    "example": "The effects of climate change on polar ecosystems are well-documented in scientific studies."
+    "english": "predator",
+    "chinese": "食肉动物；捕食者",
+    "example": "Lions are fierce predators in the African savannah."
   },
   {
-    "english": "amnesia",
-    "chinese": "记忆缺失",
-    "example": "The patient's amnesia made it difficult to recall details of the car accident."
+    "english": "prey",
+    "chinese": "猎物",
+    "example": "The deer became easy prey for the hungry wolf."
   },
   {
-    "english": "fur",
-    "chinese": "毛皮",
-    "example": "Arctic animals like polar bears rely on their thick fur to survive freezing temperatures."
-  },
-  {
-    "english": "bet",
-    "chinese": "打赌",
-    "example": "I bet you can't name three animals that adapt to extreme climates."
-  },
-  {
-    "english": "extreme climate",
-    "chinese": "极端气候",
-    "example": "Scientists study how plants survive in regions with extreme climate conditions."
-  },
-  {
-    "english": "hare",
-    "chinese": "野兔",
-    "example": "The snow hare changes its fur color to blend in with the winter snow."
-  },
-  {
-    "english": "variation",
-    "chinese": "变化",
-    "example": "There's a noticeable variation in bird migration patterns due to global warming."
+    "english": "fascinating",
+    "chinese": "有吸引力的，迷人的",
+    "example": "The documentary about ancient Egypt is really fascinating."
   },
   {
     "english": "mechanism",
     "chinese": "机制，结构方式",
-    "example": "The body's immune mechanism helps fight off harmful bacteria."
+    "example": "The human body has a complex mechanism for fighting diseases."
+  },
+  {
+    "english": "defense mechanism",
+    "chinese": "(生物的)防御机制",
+    "example": "Some animals use camouflage as a defense mechanism."
+  },
+  {
+    "english": "evolve",
+    "chinese": "进化",
+    "example": "Species evolve over time to adapt to their environments."
+  },
+  {
+    "english": "variation",
+    "chinese": "变化",
+    "example": "There is a lot of variation in the colors of these flowers."
+  },
+  {
+    "english": "ethical",
+    "chinese": "道德的",
+    "example": "It's important to make ethical decisions in business."
   },
   {
     "english": "foraging",
     "chinese": "觅食",
-    "example": "Deer spend hours foraging for food in the forest each day."
+    "example": "Birds spend the morning foraging for food in the garden."
+  },
+  {
+    "english": "occasion",
+    "chinese": "场合",
+    "example": "Weddings are special occasions that bring families together."
+  },
+  {
+    "english": "surroundings",
+    "chinese": "环境",
+    "example": "The peaceful surroundings of the cabin are perfect for relaxation."
+  },
+  {
+    "english": "feature",
+    "chinese": "特征",
+    "example": "One key feature of this phone is its long - lasting battery."
+  },
+  {
+    "english": "reproduce",
+    "chinese": "繁殖",
+    "example": "Rabbits can reproduce very quickly in the right conditions."
+  },
+  {
+    "english": "extreme climate",
+    "chinese": "极端气候",
+    "example": "Polar regions are experiencing the effects of extreme climate change."
+  },
+  {
+    "english": "hare",
+    "chinese": "野兔",
+    "example": "A hare ran across the field and disappeared into the bushes."
+  },
+  {
+    "english": "primary",
+    "chinese": "主要的",
+    "example": "The primary reason for his success is hard work."
+  },
+  {
+    "english": "fur",
+    "chinese": "毛皮",
+    "example": "The fox's fur is thick and warm in winter."
+  },
+  {
+    "english": "bet",
+    "chinese": "打赌",
+    "example": "He made a bet that his team would win the game."
+  },
+  {
+    "english": "phenomenon",
+    "chinese": "现象",
+    "example": "The northern lights are a beautiful natural phenomenon."
+  },
+  {
+    "english": "widespread",
+    "chinese": "普遍的",
+    "example": "Smartphones are now widespread in most countries."
+  },
+  {
+    "english": "well-documented",
+    "chinese": "被广泛记录的",
+    "example": "The effects of this medicine are well - documented in medical research."
+  },
+  {
+    "english": "amnesia",
+    "chinese": "记忆缺失",
+    "example": "The accident caused him to suffer from amnesia and forget recent events."
+  },
+  {
+    "english": "refer to",
+    "chinese": "指的是",
+    "example": "When I say 'mystery', I refer to an unsolved crime."
   },
   {
     "english": "incident",
     "chinese": "事件",
-    "example": "The exhibition includes art inspired by historical environmental incidents."
+    "example": "The police are investigating a strange incident in the neighborhood."
   },
   {
     "english": "it follows that ...",
-    "chinese": "因此...",
-    "example": "Animals adapt to their environment; it follows that climate change affects their survival."
+    "chinese": "因此……",
+    "example": "If all men are mortal and Socrates is a man, it follows that Socrates is mortal."
   },
   {
     "english": "sculptor",
     "chinese": "雕塑家",
-    "example": "The sculptor created a statue of a hare to show nature's resilience."
+    "example": "The famous sculptor created a stunning statue for the park."
   },
   {
     "english": "sculpture",
     "chinese": "雕塑",
-    "example": "The exhibition features a sculpture of an animal in an extreme climate."
+    "example": "The museum has a large collection of modern sculpture."
   },
   {
     "english": "portray",
     "chinese": "描绘",
-    "example": "The artist portrays environmental themes in their latest work."
+    "example": "The painting portrays a beautiful landscape with mountains and a lake."
   },
   {
     "english": "portrait",
     "chinese": "肖像",
-    "example": "The portrait captures the hare's adaptation to its habitat perfectly."
+    "example": "The artist painted a detailed portrait of the queen."
   },
   {
     "english": "prominently",
     "chinese": "突出地",
-    "example": "The exhibition prominently displays sculptures of animals in harsh environments."
+    "example": "Her name is prominently displayed on the award."
+  },
+  {
+    "english": "display",
+    "chinese": "显示",
+    "example": "The store will display new products in the window."
+  },
+  {
+    "english": "majority",
+    "chinese": "大部分",
+    "example": "The majority of people prefer coffee over tea in the morning."
   },
   {
     "english": "ratio",
-    "chinese": "比率; 比例",
-    "example": "The ratio of fur thickness to body size is key for arctic animals."
+    "chinese": "比率；比例",
+    "example": "The ratio of boys to girls in the class is 2:1."
   },
   {
     "english": "thereby",
-    "chinese": "从而; 由此; 因此;",
-    "example": "The sculpture highlights adaptation, thereby raising awareness about climate issues."
+    "chinese": "从而；由此；因此；",
+    "example": "He studied hard, thereby improving his grades significantly."
   },
   {
     "english": "diminish",
     "chinese": "减少",
-    "example": "Warmer temperatures diminish the snow cover, affecting hare populations."
+    "example": "The rain will help diminish the risk of forest fires."
   },
   {
     "english": "architecture",
     "chinese": "建筑学",
-    "example": "The building's architecture incorporates elements of natural adaptation."
+    "example": "She is studying architecture at the university to become a designer."
+  },
+  {
+    "english": "function",
+    "chinese": "功能",
+    "example": "The main function of a chair is to provide a place to sit."
   },
   {
     "english": "residential",
     "chinese": "住宅的",
-    "example": "Residential areas near forests often face wildlife encounters."
+    "example": "The new neighborhood has many residential buildings."
+  },
+  {
+    "english": "structure",
+    "chinese": "结构",
+    "example": "The bridge has a strong and stable structure."
   },
   {
     "english": "theme",
     "chinese": "主题",
-    "example": "The exhibition's theme is nature's resilience in extreme climates."
+    "example": "The theme of the book is love and friendship."
   },
   {
     "english": "exhibition",
     "chinese": "展览",
-    "example": "Don't miss the prestigious exhibition on environmental art."
+    "example": "The art exhibition features paintings from local artists."
   },
   {
     "english": "prestigious",
     "chinese": "有声望的",
-    "example": "She won an award from a prestigious art organization."
+    "example": "He graduated from a prestigious university and got a good job."
   },
   {
     "english": "solo",
-    "chinese": "独自的; 单独的",
-    "example": "The artist is holding a solo exhibition of their nature-inspired works."
+    "chinese": "独自的；单独的",
+    "example": "She performed a beautiful solo on the piano."
   },
   {
     "english": "assumption",
     "chinese": "假设",
-    "example": "The study challenges the assumption that all hares adapt similarly to heat."
+    "example": "We made an assumption that the meeting would be canceled."
   },
   {
     "english": "bacteria",
     "chinese": "细菌",
-    "example": "Some bacteria thrive in inorganic environments, defying common beliefs."
+    "example": "Washing your hands can help kill harmful bacteria."
+  },
+  {
+    "english": "exploration",
+    "chinese": "探索；研究",
+    "example": "The exploration of space has led to many scientific discoveries."
+  },
+  {
+    "english": "fundamental",
+    "chinese": "基本的；基础的",
+    "example": "Learning to read is a fundamental skill for children."
   },
   {
     "english": "inorganic",
     "chinese": "无机的",
-    "example": "Inorganic materials in the soil affect plant growth in extreme climates."
+    "example": "Rocks are mostly inorganic materials."
   },
   {
     "english": "organic",
     "chinese": "有机的",
-    "example": "Organic matter in the soil helps plants survive harsh weather."
+    "example": "Organic fruits and vegetables are grown without pesticides."
   },
   {
     "english": "verbalize",
     "chinese": "用言语表达",
-    "example": "The artist struggles to verbalize the impact of climate change through sculpture."
+    "example": "It can be hard to verbalize your feelings when you're upset."
   },
   {
     "english": "theory",
     "chinese": "理论",
-    "example": "The theory explains how animals develop variations for survival."
+    "example": "The theory of relativity changed our understanding of the universe."
   },
   {
     "english": "neighboring",
     "chinese": "临近的",
-    "example": "Neighboring ecosystems often share similar adaptation mechanisms."
+    "example": "Our town has a good relationship with the neighboring communities."
   },
   {
     "english": "characteristic/feature",
     "chinese": "特征",
-    "example": "A key characteristic of arctic hares is their seasonal fur color change."
+    "example": "A characteristic of this plant is its bright red flowers."
   }
 ]

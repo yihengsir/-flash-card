@@ -1,117 +1,177 @@
 [
   {
-    "english": "ash tree",
-    "chinese": "白蜡树",
-    "example": "Ash trees are commonly found in temperate forests and are known for their hard wood."
+    "english": "structured",
+    "chinese": "结构化的",
+    "example": "The training program is highly structured to meet specific learning goals."
   },
   {
-    "english": "mechanical",
-    "chinese": "机动的",
-    "example": "Mechanical devices like tractors have revolutionized modern agriculture."
+    "english": "lecture",
+    "chinese": "讲座，演讲",
+    "example": "The professor gave an interesting lecture on ancient history."
   },
   {
-    "english": "originate",
-    "chinese": "起源",
-    "example": "The custom of celebrating New Year originates from ancient cultural traditions."
+    "english": "comprehend",
+    "chinese": "理解",
+    "example": "It's difficult to comprehend complex scientific theories without prior knowledge."
   },
   {
-    "english": "medium",
-    "chinese": "介质",
-    "example": "Water is an excellent medium for sound to travel through."
+    "english": "credit",
+    "chinese": "学分",
+    "example": "You need to earn a certain number of credits to graduate from college."
   },
   {
-    "english": "interplanetary",
-    "chinese": "行星间的",
-    "example": "Scientists are developing technologies for interplanetary travel to Mars."
+    "english": "cooperate",
+    "chinese": "合作",
+    "example": "The two companies decided to cooperate on a new business project."
   },
   {
-    "english": "dense",
-    "chinese": "密集的",
-    "example": "The dense forest provides a habitat for a variety of wildlife species."
+    "english": "incident",
+    "chinese": "事件",
+    "example": "The police are investigating a mysterious incident that happened last night."
   },
   {
-    "english": "fundamentally",
-    "chinese": "根本上",
-    "example": "The two theories differ fundamentally in their approach to solving the problem."
+    "english": "insect",
+    "chinese": "昆虫",
+    "example": "Bees are important insects for pollinating flowers."
   },
   {
-    "english": "diverse",
-    "chinese": "多种多样的",
-    "example": "The region is home to a diverse range of plant and animal species."
+    "english": "moth",
+    "chinese": "蛾",
+    "example": "A moth flew into the room and circled around the light."
   },
   {
-    "english": "dominate",
-    "chinese": "支配",
-    "example": "Large corporations often dominate the global market for electronic devices."
+    "english": "interfere with",
+    "chinese": "干扰",
+    "example": "Please don't interfere with the ongoing experiment."
   },
   {
-    "english": "marine",
-    "chinese": "海的",
-    "example": "Marine biologists study the ecosystems and species that live in the ocean."
+    "english": "bias",
+    "chinese": "偏见",
+    "example": "We should try to avoid bias when making important decisions."
   },
   {
-    "english": "thrive",
-    "chinese": "繁荣",
-    "example": "Some plants thrive in tropical climates with high temperatures and humidity."
+    "english": "mentality",
+    "chinese": "心态",
+    "example": "A positive mentality can help you overcome many difficulties."
   },
   {
-    "english": "tropical",
-    "chinese": "热带的",
-    "example": "Tropical rainforests are known for their high biodiversity and unique species."
+    "english": "split",
+    "chinese": "分割",
+    "example": "The group decided to split into two teams for the project."
   },
   {
-    "english": "temperate",
-    "chinese": "温和的",
-    "example": "The region has a temperate climate with mild winters and cool summers."
+    "english": "defensive",
+    "chinese": "防卫性的",
+    "example": "His response seemed overly defensive when we asked simple questions."
   },
   {
-    "english": "landmark",
-    "chinese": "地标",
-    "example": "The Eiffel Tower is a famous landmark and popular tourist attraction in Paris."
+    "english": "feedback",
+    "chinese": "反馈",
+    "example": "We welcome feedback from customers to improve our products."
   },
   {
-    "english": "magnetic",
-    "chinese": "磁性的",
-    "example": "A compass uses a magnetic needle to point towards the Earth's magnetic north."
+    "english": "unity",
+    "chinese": "团结",
+    "example": "National unity is crucial for a country's development."
   },
   {
-    "english": "constant",
-    "chinese": "恒定的",
-    "example": "The Earth's rotation around the Sun is a constant and predictable movement."
+    "english": "acknowledge",
+    "chinese": "承认",
+    "example": "He finally acknowledged his mistake and apologized."
   },
   {
-    "english": "tunnel",
-    "chinese": "隧道",
-    "example": "The highway tunnel allows vehicles to pass through the mountain range safely."
+    "english": "proactive",
+    "chinese": "积极主动的",
+    "example": "Being proactive in solving problems can save a lot of time."
   },
   {
-    "english": "navigation",
-    "chinese": "导航",
-    "example": "Modern navigation systems use GPS to help drivers find the best routes."
+    "english": "literally",
+    "chinese": "的确，确实",
+    "example": "I was literally speechless when I heard the amazing news."
   },
   {
-    "english": "extensive",
-    "chinese": "广泛的",
-    "example": "Extensive research has shown the benefits of regular exercise for overall health."
+    "english": "flaw",
+    "chinese": "缺陷",
+    "example": "Every product has its own flaw, but we try to minimize them."
   },
   {
-    "english": "revive",
-    "chinese": "复活",
-    "example": "Scientists are working to revive extinct species through cloning technology."
+    "english": "distinct",
+    "chinese": "明显不同的",
+    "example": "The two species have distinct characteristics that set them apart."
   },
   {
-    "english": "tolerant",
-    "chinese": "忍受的",
-    "example": "Some plant species are tolerant of drought and can survive in arid environments."
+    "english": "inferior",
+    "chinese": "劣等的",
+    "example": "Using inferior materials can lead to poor product quality."
   },
   {
-    "english": "notion",
-    "chinese": "概念",
-    "example": "The notion of time travel has been explored in many science fiction stories."
+    "english": "trait",
+    "chinese": "特点",
+    "example": "Honesty is a valuable trait that everyone should possess."
   },
   {
-    "english": "disperse",
-    "chinese": "分散",
-    "example": "Winds can disperse seeds over long distances, helping plants to spread."
+    "english": "community",
+    "chinese": "社区",
+    "example": "The local community works together to improve the neighborhood."
+  },
+  {
+    "english": "fairy",
+    "chinese": "仙子，小精灵",
+    "example": "In the story, a fairy granted the girl three wishes."
+  },
+  {
+    "english": "formal",
+    "chinese": "正式的",
+    "example": "We need to wear formal attire for the business meeting."
+  },
+  {
+    "english": "temperature",
+    "chinese": "温度",
+    "example": "The temperature outside is very high, so stay hydrated."
+  },
+  {
+    "english": "automatically",
+    "chinese": "自动地",
+    "example": "The door will open automatically when it detects motion."
+  },
+  {
+    "english": "shiver",
+    "chinese": "颤抖",
+    "example": "She started to shiver in the cold winter wind."
+  },
+  {
+    "english": "metabolism",
+    "chinese": "新陈代谢",
+    "example": "A good diet can help boost your metabolism."
+  },
+  {
+    "english": "mammal",
+    "chinese": "哺乳动物",
+    "example": "Dogs and cats are common domestic mammals."
+  },
+  {
+    "english": "perspire",
+    "chinese": "出汗",
+    "example": "You will perspire a lot when exercising vigorously."
+  },
+  {
+    "english": "splash",
+    "chinese": "泼洒",
+    "example": "The children love to splash water in the pool on hot days."
+  },
+  {
+    "english": "internal",
+    "chinese": "内部的",
+    "example": "The company is dealing with some internal issues at the moment."
+  },
+  {
+    "english": "equalize",
+    "chinese": "使相等",
+    "example": "We need to equalize the distribution of resources among different regions."
+  },
+  {
+    "english": "chamber",
+    "chinese": "室",
+    "example": "The gas is stored in a sealed chamber for safety."
   }
 ]

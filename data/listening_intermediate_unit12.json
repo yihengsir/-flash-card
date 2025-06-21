@@ -1,88 +1,197 @@
 [
   {
+    "english": "accompany",
+    "chinese": "伴随",
+    "example": "She asked her friend to accompany her to the concert."
+  },
+  {
+    "english": "era",
+    "chinese": "时代",
+    "example": "The digital era has transformed how we communicate."
+  },
+  {
+    "english": "drown",
+    "chinese": "淹没",
+    "example": "Heavy rain can drown low - lying areas."
+  },
+  {
+    "english": "absence",
+    "chinese": "缺席",
+    "example": "His absence from the meeting was noted by all."
+  },
+  {
+    "english": "fertile",
+    "chinese": "肥沃的",
+    "example": "Fertile soil is good for growing crops."
+  },
+  {
+    "english": "moral",
+    "chinese": "道德的",
+    "example": "We should make moral choices in life."
+  },
+  {
+    "english": "ultimately",
+    "chinese": "最终",
+    "example": "Ultimately, he decided to pursue his dream."
+  },
+  {
+    "english": "dilemma",
+    "chinese": "困境",
+    "example": "She faced a dilemma between work and study."
+  },
+  {
+    "english": "achievement",
+    "chinese": "成就",
+    "example": "Winning the race was a great achievement for him."
+  },
+  {
+    "english": "approximate",
+    "chinese": "近似的",
+    "example": "We made an approximate calculation of the cost."
+  },
+  {
+    "english": "correlate",
+    "chinese": "相关的",
+    "example": "Studies show that exercise and health correlate."
+  },
+  {
+    "english": "symbolic",
+    "chinese": "象征的",
+    "example": "The white dove is symbolic of peace."
+  },
+  {
     "english": "failure",
     "chinese": "失败",
-    "example": "The project's failure was due to insufficient funding and poor planning."
+    "example": "Failure is a stepping - stone to success."
+  },
+  {
+    "english": "implement",
+    "chinese": "执行",
+    "example": "The company will implement new policies."
   },
   {
     "english": "merely",
     "chinese": "仅仅",
-    "example": "The study shows that stress is merely one factor affecting overall health."
+    "example": "He is merely a beginner in this field."
   },
   {
     "english": "overcome",
     "chinese": "克服",
-    "example": "Scientists are working to overcome challenges in renewable energy technology."
+    "example": "She overcame her fear of heights."
   },
   {
     "english": "potentially",
     "chinese": "潜在地",
-    "example": "Ocean currents have the potential to affect global climate patterns significantly."
+    "example": "This idea has potentially great benefits."
   },
   {
     "english": "statistically",
     "chinese": "统计地",
-    "example": "Statistically, urban areas have higher air pollution levels than rural regions."
+    "example": "Statistically, smoking increases health risks."
+  },
+  {
+    "english": "paradox",
+    "chinese": "悖论",
+    "example": "The liar paradox is a famous logical problem."
   },
   {
     "english": "inspire",
     "chinese": "启发思考",
-    "example": "The documentary aims to inspire viewers to take action on environmental issues."
+    "example": "His speech inspired many to take action."
   },
   {
     "english": "phenomenon",
     "chinese": "现象",
-    "example": "The melting of polar ice is a phenomenon directly linked to global warming."
+    "example": "The northern lights are a beautiful natural phenomenon."
   },
   {
     "english": "publish",
     "chinese": "发表",
-    "example": "Researchers publish their findings in scientific journals to share knowledge."
+    "example": "The author will publish a new book next month."
   },
   {
     "english": "reject",
     "chinese": "拒绝",
-    "example": "The committee decided to reject the proposal due to its environmental impact."
+    "example": "They reject the proposal due to high costs."
   },
   {
     "english": "romantic",
     "chinese": "浪漫的",
-    "example": "The poet uses romantic imagery to describe the beauty of natural landscapes."
+    "example": "They had a romantic dinner by the beach."
+  },
+  {
+    "english": "stimulate",
+    "chinese": "激发",
+    "example": "Coffee can stimulate your mind in the morning."
   },
   {
     "english": "subjective",
-    "example": "Opinions on art can be subjective, varying from person to person."
+    "chinese": "主观的",
+    "example": "Beauty is often subjective."
   },
   {
     "english": "decade",
-    "example": "Over the past decade, there has been a surge in eco-friendly innovations."
+    "chinese": "十年",
+    "example": "Many changes happened in the past decade."
   },
   {
     "english": "instructor",
-    "example": "The biology instructor explained the complexity of ecosystem interactions."
+    "chinese": "导师",
+    "example": "The instructor helped students with their projects."
   },
   {
     "english": "significantly",
-    "example": "Reducing plastic use can significantly decrease ocean pollution."
+    "chinese": "显著地",
+    "example": "The new policy significantly improved efficiency."
   },
   {
     "english": "adopt",
-    "example": "Many countries have adopted stricter policies to protect endangered species."
+    "chinese": "采用",
+    "example": "The company will adopt new technology."
   },
   {
     "english": "evaluate",
-    "example": "Scientists evaluate the health of coral reefs by studying fish populations."
+    "chinese": "评估",
+    "example": "We need to evaluate the project's progress."
   },
   {
     "english": "vice",
-    "example": "Deforestation for profit is seen as a vice for global environmental health."
+    "chinese": "邪恶",
+    "example": "We should fight against vice in society."
+  },
+  {
+    "english": "virtue",
+    "chinese": "美德",
+    "example": "Honesty is a great virtue."
+  },
+  {
+    "english": "biography",
+    "chinese": "传记",
+    "example": "She wrote a biography of a famous scientist."
   },
   {
     "english": "glimpse",
-    "example": "Satellite images give scientists a glimpse into remote polar ecosystems."
+    "chinese": "一瞥",
+    "example": "He caught a glimpse of the rare bird."
   },
   {
     "english": "statue",
-    "example": "The ancient statue depicts a deity associated with natural phenomena."
+    "chinese": "雕像",
+    "example": "The statue in the park is very impressive."
+  },
+  {
+    "english": "anecdote",
+    "chinese": "趣闻",
+    "example": "He told an anecdote about his childhood."
+  },
+  {
+    "english": "eminent",
+    "chinese": "杰出的",
+    "example": "The university invited an eminent scholar to give a lecture."
+  },
+  {
+    "english": "benchmark",
+    "chinese": "基准",
+    "example": "This test serves as a benchmark for students' progress."
   }
 ]
