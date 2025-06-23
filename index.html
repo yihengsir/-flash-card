@@ -132,14 +132,7 @@
 
     <div id="toefl-subject-page" class="fixed inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex flex-col items-center justify-center z-30 p-4 hidden">
         <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-md w-full">
-            
-    <div class="mb-4 flex items-center justify-center space-x-2">
-        <input id="global-search-input" type="text" placeholder="全局搜索词汇..." class="p-2 rounded-md text-black w-64">
-        <button id="global-search-btn" class="bg-white text-primary px-3 py-2 rounded-md shadow hover:bg-gray-100">
-            <i class="fa fa-search"></i> 搜索
-        </button>
-    </div>
-    <h2 class="text-3xl font-bold text-primary mb-6">选择托福科目</h2>
+            <h2 class="text-3xl font-bold text-primary mb-6">选择托福科目</h2>
             <div class="selection-grid">
                 <button data-subject="reading" class="selection-button">阅读 Reading</button>
                 <button data-subject="listening" class="selection-button">听力 Listening</button>
@@ -154,14 +147,7 @@
 
     <div id="toefl-difficulty-page" class="fixed inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex flex-col items-center justify-center z-30 p-4 hidden">
         <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-md w-full">
-            
-    <div class="mb-4 flex items-center justify-center space-x-2">
-        <input id="global-search-input" type="text" placeholder="全局搜索词汇..." class="p-2 rounded-md text-black w-64">
-        <button id="global-search-btn" class="bg-white text-primary px-3 py-2 rounded-md shadow hover:bg-gray-100">
-            <i class="fa fa-search"></i> 搜索
-        </button>
-    </div>
-    <h2 class="text-3xl font-bold text-primary mb-6">选择难度</h2>
+            <h2 class="text-3xl font-bold text-primary mb-6">选择难度</h2>
             <div class="selection-grid">
                 <button data-difficulty="foundation" class="selection-button">基础 Foundation</button>
                 <button data-difficulty="beginner" class="selection-button">初级 Beginner</button>
@@ -176,14 +162,7 @@
 
     <div id="toefl-content-type-page" class="fixed inset-0 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex flex-col items-center justify-center z-30 p-4 hidden">
         <div class="bg-white p-8 rounded-lg shadow-xl text-center max-w-md w-full">
-            
-    <div class="mb-4 flex items-center justify-center space-x-2">
-        <input id="global-search-input" type="text" placeholder="全局搜索词汇..." class="p-2 rounded-md text-black w-64">
-        <button id="global-search-btn" class="bg-white text-primary px-3 py-2 rounded-md shadow hover:bg-gray-100">
-            <i class="fa fa-search"></i> 搜索
-        </button>
-    </div>
-    <h2 class="text-3xl font-bold text-primary mb-6">选择内容类型</h2>
+            <h2 class="text-3xl font-bold text-primary mb-6">选择内容类型</h2>
             <div class="selection-grid">
                 <button data-content-type="unit" class="selection-button">按照授课单元</button>
                 <button data-content-type="past-content" class="selection-button">按照往期内容</button>
@@ -212,11 +191,7 @@
                 <div id="card-counter" class="text-white">
                     <span id="current-card-index">1</span> / <span id="total-cards">0</span>
                 </div>
-                <input id="search-input" type="text" placeholder="搜索词汇..." class="p-2 rounded-md text-black w-36 md:w-52">
-<button id="search-btn" class="bg-white text-primary px-3 py-2 rounded-md shadow hover:bg-gray-100 transition duration-300 mr-2">
-  <i class="fa fa-search"></i>
-</button>
-<button id="stats-btn" class="bg-white text-primary px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300">
+                <button id="stats-btn" class="bg-white text-primary px-4 py-2 rounded-full shadow hover:bg-gray-100 transition duration-300">
                     <i class="fa fa-bar-chart"></i> 统计
                 </button>
             </div>
@@ -1075,119 +1050,6 @@
             console.log('App restarted. All session stats reset. Going to category selection.');
         }
 
-        
-        // --- Global Search Logic ---
-        const searchInput = document.getElementById('search-input');
-        const searchBtn = document.getElementById('search-btn');
-        let lastViewedCardIndex = null;
-
-        searchBtn.addEventListener('click', () => {
-            const keyword = searchInput.value.trim().toLowerCase();
-            if (!keyword) return;
-
-            const matchIndex = flashcards.findIndex(card =>
-                card.english.toLowerCase().includes(keyword) ||
-                card.chinese.includes(keyword)
-            );
-
-            if (matchIndex !== -1) {
-                lastViewedCardIndex = currentCardIndex;
-                currentCardIndex = matchIndex;
-                renderCard();
-            } else {
-                alert("没有找到相关词汇。");
-            }
-        });
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Enter' && document.activeElement === searchInput) {
-                searchBtn.click();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.altKey && e.key === 'ArrowLeft' && lastViewedCardIndex !== null) {
-                currentCardIndex = lastViewedCardIndex;
-                lastViewedCardIndex = null;
-                renderCard();
-            }
-        });
-    
-        
-    // --- 全局词汇搜索功能 ---
-    let globalIndex = [];
-    const globalSearchInput = document.getElementById('global-search-input');
-    const globalSearchBtn = document.getElementById('global-search-btn');
-
-    const allPossiblePaths = [];
-    const subjects = ["reading", "listening", "speaking", "writing"];
-    const difficulties = ["foundation", "beginner", "intermediate", "advanced"];
-    const unitCountMap = { foundation: 12, beginner: 8, intermediate: 14, advanced: 12 };
-    for (const subject of subjects) {
-        for (const difficulty of difficulties) {
-            const count = unitCountMap[difficulty];
-            for (let i = 1; i <= count; i++) {
-                allPossiblePaths.push(`data/${subject}_${difficulty}_unit${i}.json`);
-            }
-        }
-    }
-
-    async function preloadGlobalIndex() {
-        const results = await Promise.all(allPossiblePaths.map(async path => {
-            try {
-                const res = await fetch(path);
-                if (!res.ok) return [];
-                const cards = await res.json();
-                return cards.map(card => ({ ...card, path }));
-            } catch {
-                return [];
-            }
-        }));
-        globalIndex = results.flat();
-        console.log("全局词汇索引已加载：", globalIndex.length);
-    }
-
-    async function searchGlobalAndJump() {
-        const keyword = globalSearchInput.value.trim().toLowerCase();
-        if (!keyword) return;
-
-        const match = globalIndex.find(card =>
-            card.english.toLowerCase().includes(keyword) || card.chinese.includes(keyword)
-        );
-
-        if (match) {
-            const path = match.path;
-            const targetWord = match.english;
-
-            try {
-                const res = await fetch(path);
-                const cards = await res.json();
-                if (!Array.isArray(cards)) throw new Error("格式错误");
-
-                flashcards = cards;
-                currentCardIndex = flashcards.findIndex(c => c.english === targetWord);
-                if (currentCardIndex === -1) currentCardIndex = 0;
-
-                showPage(appContent);
-                renderCard();
-                updateCardCounter();
-                updateStatsDisplay();
-            } catch (err) {
-                alert("跳转失败，请稍后重试");
-            }
-        } else {
-            alert("未找到相关词汇。");
-        }
-    }
-
-    if (globalSearchBtn) {
-        globalSearchBtn.addEventListener('click', searchGlobalAndJump);
-        globalSearchInput.addEventListener('keydown', e => {
-            if (e.key === 'Enter') searchGlobalAndJump();
-        });
-        preloadGlobalIndex(); // 初始化加载索引
-    }
-    
         // --- Event Listeners Binding ---
         function bindEventListeners() {
             // Access Code Page
